@@ -1,51 +1,70 @@
 require 'json'
 
 class VcrDataFilter
-  FAKER_MAP = {
-    "id" => -> { Faker::Number.number(digits: 4) },
-    "title" => -> { Faker::Company.industry },
-    "description" => -> { Faker::Company.catch_phrase },
-    "location" => -> { Faker::Address.city },
-    "position_type" => -> { "Full Time" },
-    "is_remote_allowed" => -> { Faker::Boolean.boolean },
-    "is_private" => -> { Faker::Boolean.boolean },
-    "is_archived" => -> { Faker::Boolean.boolean },
-    "application_email" => -> { Faker::Internet.email },
-    "hosted_url" => -> { Faker::Internet.url },
-    "created_date" => -> {Faker::Date.in_date_period } ,
-    "modified_date" => -> { Faker::Date.in_date_period },
-    "tags" => -> { Faker::Hipster.words },
-    "team" => -> { Faker::Hipster.word },
-    "state" => -> { Faker::Address.state },
-    "close_date" => -> { Faker::Date.in_date_period },
-    "type" => -> { {"name"=>"zoom", "metadata"=>{"meeting_url"=>"https://us06web.zoom.us/j/1234", "password"=>"N/A", "meeting_id"=>"1234"}}},
-    "created_by" => -> { {"id"=> Faker::Number.number(digits: 4), "name"=>"Jim Jones", "email"=>"jjones@testdouble.com"} },
-    "invitees" => -> { [{"name"=>"Jim Jones", "email"=>"jjones@testdouble.com"}] }
+  FILTERS = {
+    Hash => -> (item_hash) { filter_hash(item_hash) },
+    Array => -> (item_array) { filter_array(item_array) },
+    String => -> (string) {  },
+    Integer => -> (integer) { Faker::Number.number(digits: 10) },
+  }
+
+  KEY_FILTERS = {
+    "meta" => -> (values) { values }, 
+    "id" => -> (id) { id },
+    "opening_id" => -> (id) { id },
+    "stage_id" => -> (id) { id },
+    "created_at" => -> (date) { date },
+    "updated_at" => -> (date) { date },
+    "email" => -> (_) {  Faker::Internet.email },
+    "title" => -> (_) { Faker::Company.industry },
+    "description" => -> (_) { Faker::Company.catch_phrase },
+    "location" => -> (_) { Faker::Address.city },
+    "position_type" => -> (_) { "Full Time" },
+    "is_remote_allowed" => -> (_) { Faker::Boolean.boolean },
+    "is_private" => -> (_) { Faker::Boolean.boolean },
+    "is_archived" => -> (_) { Faker::Boolean.boolean },
+    "application_email" => -> (_) { Faker::Internet.email },
+    "hosted_url" => -> (_) { Faker::Internet.url },
+    "created_date" => -> (_) {Faker::Date.in_date_period } ,
+    "modified_date" => -> (_) { Faker::Date.in_date_period },
+    "tags" => -> (_) { Faker::Hipster.words },
+    "team" => -> (_) { Faker::Hipster.word },
+    "state" => -> (_) { Faker::Address.state },
+    "close_date" => -> (_) { Faker::Date.in_date_period }
   }
 
   class << self
     def filter_body(body)
-      filter_opening_data(JSON.parse(body)).to_json
+      filter_hash(JSON.parse(body)).to_json
     end
 
 
-    def filter_opening_data(body)
-      if body["objects"]
-        objects = body["objects"].map { |body_object| mask_body(body_object) }
-        { "meta" => body["meta"], "objects" => objects}
+    def filter_opening_data(key, value)
+      if KEY_FILTERS.has_key?(key)
+        KEY_FILTERS[key].call(value)
+      elsif value.is_a?(Hash)
+        filter_hash(value)
+      elsif value.is_a?(Array)
+        filter_array(value)
+      elsif value.is_a?(String)
+        Faker::Lorem.word
+      elsif value.is_a?(Integer)
+        Faker::Number.number(digits: 10)
       else
-        mask_body(body)
+        return value
       end
     end
 
-    def mask_body(resource)
-      if resource.is_a?(Array)
-      elsif resource.is_a?(Hash)
-      else
-        {}.tap do |masked| 
-          body.keys.each do |attribute| 
-            masked[attribute] = FAKER_MAP.key?(attribute) ? FAKER_MAP[attribute].call : body[attribute]
-          end
+    def filter_array(item_array)
+      item_array.map do |item|
+        filter_opening_data(nil, item)
+      end
+    end
+
+    def filter_hash(item_hash)
+      {}.tap do |new_hash|
+        item_hash.each do |k,v|
+          new_hash[k] = filter_opening_data(k, v)
         end
       end
     end

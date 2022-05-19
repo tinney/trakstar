@@ -11,9 +11,12 @@ gem "minitest", "~> 5.0"
 
 gem "standard", "~> 1.3"
 
+gem "dotenv"
+
+gem "pry"
+
 group :test do
   gem "webmock"
   gem "vcr"
-  gem "pry"
   gem 'faker'
 end

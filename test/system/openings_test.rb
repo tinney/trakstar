@@ -5,7 +5,7 @@ require "test_helper"
 class OpeningsTest < Minitest::Test
   def test_openings_can_be_fetched
     VCR.use_cassette("openings") do
-      Trakstar.config(api_token: "abc123-api-token")
+      Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
       openings = Trakstar.openings
 
       assert_equal 19, openings.count

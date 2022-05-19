@@ -13,6 +13,7 @@ GEM
     concurrent-ruby (1.1.9)
     crack (0.4.5)
       rexml
+    dotenv (2.7.6)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     hashdiff (1.0.1)
@@ -61,6 +62,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  dotenv
   faker
   minitest (~> 5.0)
   pry

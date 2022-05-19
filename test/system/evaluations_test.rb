@@ -5,7 +5,7 @@ require "test_helper"
 class EvaluationsTest < Minitest::Test
   def test_evaluations_can_be_fetched_for_a_candidate
     VCR.use_cassette("evaluations") do
-      Trakstar.config(api_token: "abc123-api-token")
+      Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
       candidate_id = "41477722"
       evaluations = Trakstar.evaluations(candidate_id)
 

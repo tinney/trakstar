@@ -2,14 +2,16 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
+require "dotenv/load"
 require "trakstar"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
+Trakstar.config(
+  api_token: ENV["TRAKSTAR_API_KEY"]
+)
 
-require "irb"
-IRB.start(__FILE__)
+# (If you use this, don't forget to add pry to your Gemfile!)
+require "pry"
+Pry.start

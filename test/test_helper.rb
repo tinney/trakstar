@@ -5,6 +5,7 @@ require "trakstar"
 require "vcr"
 require "pry"
 require 'faker'
+require "dotenv/load"
 
 require "minitest/autorun"
 require "vcr_data_filter"
