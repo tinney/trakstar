@@ -13,10 +13,10 @@ gem "standard", "~> 1.3"
 
 gem "dotenv"
 
-gem "pry"
 
 group :test do
   gem "webmock"
   gem "vcr"
   gem 'faker'
+  gem "pry"
 end
