@@ -35,7 +35,7 @@ module Trakstar
           opening.title = data["title"]
           opening.api_id = data["id"]
           opening.state = data["state"]
-          opening.state = data["tags"]
+          opening.tags = data["tags"]
           opening.private = data["is_private"]
           opening.stages = build_stages(data["stages"]) if data.key?("stages")
           opening.sync = -> { sync(opening) }
