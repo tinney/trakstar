@@ -1,6 +1,6 @@
 module Trakstar
   class Candidate < Models::Base
-    attr_accessor :first_name, :last_name, :email, :stage_id, :opening_id, :created_at, :updated_at, :source, :source_type 
+    attr_accessor :first_name, :last_name, :email, :stage_id, :opening_id, :created_at, :updated_at, :source, :source_type
     synced_attr_accessor :state, :primary_language, :secondary_language, :profile_data, :resume_url
   end
 
@@ -44,7 +44,7 @@ module Trakstar
             candidate.secondary_language = data.dig("labels", 1, "name")
             candidate.sync = -> { sync(candidate) }
             candidate.profile_data = data["profile_data"]
-            candidate.resume_url = data.dig("resume", "file_url") 
+            candidate.resume_url = data.dig("resume", "file_url")
             candidate.source = data["source"]
             candidate.source_type = data["source_type"]
           end

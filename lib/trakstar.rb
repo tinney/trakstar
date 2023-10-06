@@ -4,6 +4,7 @@ require_relative "trakstar/version"
 require_relative "trakstar/config"
 require_relative "trakstar/http"
 require_relative "trakstar/model"
+require_relative "trakstar/retries_and_backs_off"
 require_relative "trakstar/api/openings"
 require_relative "trakstar/api/candidates"
 require_relative "trakstar/api/interviews"
@@ -19,6 +20,11 @@ module Trakstar
     (@config ||= Config.new).tap do |config|
       config.set(**attrs)
     end
+  end
+
+  def self.retries_and_backs_off(&block)
+    @retries_and_backs_off ||= RetriesAndBacksOff.new(max_retries: config.max_retry_attempts, sleep_multiplier: config.sleep_multiplier)
+    @retries_and_backs_off.call(&block)
   end
 
   def self.openings

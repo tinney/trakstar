@@ -32,7 +32,7 @@ module Trakstar
             evaluation.created_at = data["date_submitted"]
             evaluation.interviewer_id = interviewer_id
             evaluation.overall_rating = overall_rating
-            evaluation.interviewer_email = data.dig("feedback", 1, "submitted_by", "email") 
+            evaluation.interviewer_email = data.dig("feedback", 1, "submitted_by", "email")
           end
         end
       end

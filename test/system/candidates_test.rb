@@ -8,7 +8,7 @@ class CandidatesTest < Minitest::Test
       Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
       candidates = Trakstar.candidates
 
-      # assert_equal 1969, candidates.count
+      assert_equal 2401, candidates.count
 
       # candidate = candidates.first
 

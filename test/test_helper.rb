@@ -4,7 +4,7 @@ $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "trakstar"
 require "vcr"
 require "pry"
-require 'faker'
+require "faker"
 require "dotenv/load"
 
 require "minitest/autorun"
