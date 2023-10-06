@@ -21,6 +21,15 @@ Or install it yourself as:
     $ gem install trakstar
 
 ## Usage
+```
+      Trakstar.config(
+        api_token: api_key,
+        sleep_multiplier: 3, # default 2 used as 2 ** retries to backoff
+        max_retry_attemps: 5 # default is 10
+      )
+
+      Trakstar.openings  # query to find all the openings
+```
 
 # Rate limit
 # Pagination
