@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trakstar (0.5.0)
+    trakstar (0.6.0)
 
 GEM
   remote: https://rubygems.org/
@@ -74,4 +74,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.2.33
+   2.4.20

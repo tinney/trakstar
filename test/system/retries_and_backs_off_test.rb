@@ -18,11 +18,7 @@ class RetriesAndBacksOffTest < Minitest::Test
       finished = true
     end
 
-    retry_and_backs_off.call {
-      called += 1
-      raise
-    }
-  rescue
+  rescue Trakstar::Error
     assert_equal max_retries, called
     assert_equal false, finished
   end
