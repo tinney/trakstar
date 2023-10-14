@@ -23,6 +23,10 @@ module Trakstar
       class << self
         private
 
+        # Some methods come from a different sync process
+        # this allows us to load all the candidates in on a single call
+        # and sync the other data as needed.
+
         def synced_attr_accessor(*attr_names)
           attr_names.each do |name|
             define_method name do

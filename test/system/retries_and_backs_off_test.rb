@@ -17,7 +17,6 @@ class RetriesAndBacksOffTest < Minitest::Test
       raise if called <= (max_retries * 2)
       finished = true
     end
-
   rescue Trakstar::Error
     assert_equal max_retries, called
     assert_equal false, finished

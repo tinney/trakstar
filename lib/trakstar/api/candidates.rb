@@ -1,7 +1,7 @@
 module Trakstar
   class Candidate < Models::Base
-    attr_accessor :first_name, :last_name, :email, :stage_id, :opening_id, :created_at, :updated_at, :source, :source_type
-    synced_attr_accessor :state, :primary_language, :secondary_language, :profile_data, :resume_url
+    attr_accessor :first_name, :last_name, :email, :stage_id, :opening_id, :created_at, :updated_at, :source, :source_type, :labels
+    synced_attr_accessor :state, :primary_language, :secondary_language, :profile_data, :resume_url, :labels
   end
 
   module Api
@@ -30,6 +30,7 @@ module Trakstar
         end
 
         def set!(candidate, data)
+          labels = data.dig("labels") || []
           candidate.tap do |candidate|
             candidate.api_id = data["id"]
             candidate.email = data["email"]
@@ -40,8 +41,7 @@ module Trakstar
             candidate.updated_at = data["updated_date"]
             candidate.state = data["state"]
             candidate.stage_id = data["stage_id"]
-            candidate.primary_language = data.dig("labels", 0, "name")
-            candidate.secondary_language = data.dig("labels", 1, "name")
+            candidate.labels = labels.map { |l| l["name"] }
             candidate.sync = -> { sync(candidate) }
             candidate.profile_data = data["profile_data"]
             candidate.resume_url = data.dig("resume", "file_url")

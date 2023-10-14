@@ -21,46 +21,48 @@ Or install it yourself as:
     $ gem install trakstar
 
 ## Usage
+
 ```
       Trakstar.config(
         api_token: api_key,
-        sleep_multiplier: 3, # default 2 used as 2 ** retries to backoff
-        max_retry_attemps: 5 # default is 10
+        sleep_multiplier: 3, # default 5 used as 5 ** retries to backoff
+        max_retry_attemps: 5 # default is 3
       )
 
       Trakstar.openings  # query to find all the openings
+      Trakstar.candidates  # query to find all the candidates
 ```
 
 # Rate limit
+
 # Pagination
 
 class BackloadingStruct < Struct
-    def self.requires_backload(attr_names)
-        attr_names.each define_method
-          if loaded?
-            return instance_variable_get("@#{attr_name}")
-        else
-            load_detail!
-        end
-    end
+def self.requires_backload(attr_names)
+attr_names.each define_method
+if loaded?
+return instance_variable_get("@#{attr_name}")
+else
+load_detail!
+end
+end
 end
 
 Class Opening
-    requires_backload :stages, :thing, :whatever
+requires_backload :stages, :thing, :whatever
 
     def load_detail
         res = @connection.opening(@id)
         @stages = res["stages"].map { |stage| Stage.new() }
         @loaded = true
         end
+
 end
 
 Class Stage
 end
 
-
->
-opening = Trakstar::Opening.new
+> opening = Trakstar::Opening.new
 
 conn = Trakstar.new(api_key: "x")
 conn.get_openings # load all openings
@@ -75,13 +77,14 @@ conn.interviews # free floating object w/ no opening or stage knowledge
 conn.interviews(candidate_id: :candidate_id) # free floating object w/ no opening or stage knowledge
 conn.interview(id) # free floating object w/ no opening or stage knowledge
 
-
-Opening has_many => Stages 
+Opening has_many => Stages
 Stage => has_many :interviews (we lose id stage_id, candidate_id)
 Evaluation => interview has_many evaluations (we lose ids)
 
 Trakstar::Opening.all
+
 # Openings fetch
+
 # stages call will trigger an Opening.show(:trakstar_id)
 
 Trakstar::Opening.get({:trakstar_id})

@@ -5,8 +5,11 @@ module Trakstar
   module Http
     BASE_URL = "https://api.recruiterbox.com/v2"
     LIMIT = 100
+    SLEEP_FOR_LIMIT = 0.3 # limit to 3 requests a second
 
     def self.get_all(resource, offset: 0, query_params: {})
+      wait_for_limit
+
       params = query_params.map { |key, value| "#{key}=#{value}" }.join("&")
       uri = URI(BASE_URL + resource + "/?limit=#{LIMIT}&offset=#{offset}&#{params}")
 
@@ -36,6 +39,8 @@ module Trakstar
     end
 
     def self.get(resource)
+      wait_for_limit
+
       uri = URI(BASE_URL + resource)
 
       Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
@@ -49,6 +54,17 @@ module Trakstar
 
         json["objects"] || json
       end
+    end
+
+    private
+    def self.wait_for_limit
+      @last_request ||= Time.now
+
+      if (Time.now - @last_request) < 1
+        sleep(SLEEP_FOR_LIMIT) # sleep for 0.2 seconds to avoid hitting the max
+      end
+
+      @last_request = Time.now
     end
   end
 end
