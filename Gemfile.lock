@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trakstar (0.6.0)
+    trakstar (0.8.0)
 
 GEM
   remote: https://rubygems.org/

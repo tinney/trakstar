@@ -28,7 +28,7 @@ module Trakstar
           current_count = offset + results.count
 
           if total > current_count
-            results += get_all(resource, offset: current_count)
+            results += get_all(resource, offset: current_count, query_params: query_params)
           end
 
           return results
