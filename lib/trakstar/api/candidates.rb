@@ -7,6 +7,43 @@ module Trakstar
   module Api
     class Candidates
       class << self
+        def update(api_id, attributes)
+          data = Http.patch("/candidates/#{api_id}", format_attributes_for_api(attributes))
+
+          Candidate.new.tap do |candidate|
+            set!(candidate, data)
+            candidate.loaded!
+          end
+        end
+
+        def create(attributes)
+          data = Http.post("/candidates/", format_attributes_for_api(attributes))
+
+          Candidate.new.tap do |candidate|
+            set!(candidate, data)
+            candidate.loaded!
+          end
+        end
+
+        def format_attributes_for_api(attributes)
+          attrs = {}
+          attributes.dup.tap do |source|
+            attrs[:first_name] = source.delete(:first_name)
+            attrs[:last_name] = source.delete(:last_name)
+            attrs[:email] = source.delete(:email)
+            attrs[:source] = source.delete(:source)
+            attrs[:opening_id] = source.delete(:opening_id)
+            attrs[:stage_id] = source.delete(:stage_id)
+            attrs[:description] = source.delete(:description)
+            attrs[:phone] = source.delete(:phone)
+            attrs[:profile_data] = []
+            attrs[:profile_data] = 
+            attrs[:profile_data] = source.map { |key, value| { name: key.to_s, value: value } }
+          end
+
+          attrs
+        end
+
         def all(**query_params)
           Http.get_all("/candidates", query_params: query_params).map do |data|
             set!(Candidate.new, data)

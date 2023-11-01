@@ -56,6 +56,41 @@ module Trakstar
       end
     end
 
+    def self.post(resource, data)
+      uri = URI(BASE_URL + resource)
+      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+        req = Net::HTTP::Post.new(uri)
+        req.basic_auth(Trakstar.config.api_token, nil)
+        req.content_type = "application/json; charset=UTF-8"
+        req.body = data.to_json
+
+        json = Trakstar.retries_and_backs_off do
+          response = http.request(req)
+          JSON.parse(response.body)
+        end
+
+        json["objects"] || json
+      end
+    end
+
+    def self.patch(resource, data)
+      uri = URI(BASE_URL + resource)
+      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+        req = Net::HTTP::Patch.new(uri)
+        req.basic_auth(Trakstar.config.api_token, nil)
+        req.content_type = "application/json; charset=UTF-8"
+        req.body = data.to_json
+
+        json = Trakstar.retries_and_backs_off do
+          response = http.request(req)
+          JSON.parse(response.body)
+        end
+
+        json["objects"] || json
+      end
+    end
+
+
     private
     def self.wait_for_limit
       @last_request ||= Time.now

@@ -32,4 +32,45 @@ class CandidatesTest < Minitest::Test
       assert_equal ["Java", "React", "Gem"], candidate.labels
     end
   end
+
+  def test_candidate_can_be_created
+    data = {
+      first_name: "Jaq", 
+      last_name: "Smith",
+      email: "jaq.smith@testdouble.com",
+      source: "API Source", 
+      opening_id: 599766, 
+      age: "30",
+      location: "USA"
+    }
+
+    VCR.use_cassette("create_candidate") do
+      Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
+      candidate = Trakstar.create_candidate(data)
+
+      # assert_equal 50049171, candidate.api_id
+      # assert_equal ["Java", "React", "Gem"], candidate.labels
+    end
+  end
+
+  def test_candidate_can_be_updated
+    candidate_id = 55242010 
+    data = {
+      first_name: "Jac", 
+      last_name: "Perez",
+      email: "jaq.perez@testdouble.com",
+      source: "API", 
+      opening_id: 599766, 
+      age: "40",
+      location: "USA"
+    }
+
+    VCR.use_cassette("update_candidate") do
+      Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
+      candidate = Trakstar.update_candidate(candidate_id, data)
+
+      # assert_equal 50049171, candidate.api_id
+      # assert_equal ["Java", "React", "Gem"], candidate.labels
+    end
+  end
 end

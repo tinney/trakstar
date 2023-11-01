@@ -70,4 +70,12 @@ module Trakstar
   def self.notes(candidate_id)
     Api::Notes.all(candidate_id)
   end
+
+  def self.create_candidate(attributes)
+    Api::Candidates.create(attributes)
+  end
+
+  def self.update_candidate(api_id, attributes)
+    Api::Candidates.update(api_id, attributes)
+  end
 end
