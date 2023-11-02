@@ -41,15 +41,19 @@ class CandidatesTest < Minitest::Test
       source: "API Source", 
       opening_id: 599766, 
       age: "30",
-      location: "USA"
+      location: "USA",
+      level: nil,
+      "Skill 1" => ["Ruby", "JavaScript"],
+      "Skill 2" => []
     }
 
     VCR.use_cassette("create_candidate") do
       Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
       candidate = Trakstar.create_candidate(data)
 
-      # assert_equal 50049171, candidate.api_id
-      # assert_equal ["Java", "React", "Gem"], candidate.labels
+      assert_equal 55255984, candidate.api_id
+      assert_equal "Jaq", candidate.first_name
+      assert_equal "Smith", candidate.last_name
     end
   end
 
@@ -62,15 +66,28 @@ class CandidatesTest < Minitest::Test
       source: "API", 
       opening_id: 599766, 
       age: "40",
-      location: "USA"
+      location: "USA",
     }
 
     VCR.use_cassette("update_candidate") do
       Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
       candidate = Trakstar.update_candidate(candidate_id, data)
 
-      # assert_equal 50049171, candidate.api_id
-      # assert_equal ["Java", "React", "Gem"], candidate.labels
+      assert_equal 55242010, candidate.api_id
+      assert_equal "Jac", candidate.first_name
+    end
+  end
+
+  def test_candidate_raises_when_error
+    data = { }
+
+    VCR.use_cassette("create_candidate_error") do
+      begin
+        Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
+        Trakstar.create_candidate(data)
+      rescue Trakstar::Error => e
+        assert_equal "Error creating /candidates/: {\"email\": \"This field is required\", \"first_name\": \"This field is required\"}", e.message
+      end
     end
   end
 end

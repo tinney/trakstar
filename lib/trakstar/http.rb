@@ -64,12 +64,15 @@ module Trakstar
         req.content_type = "application/json; charset=UTF-8"
         req.body = data.to_json
 
-        json = Trakstar.retries_and_backs_off do
-          response = http.request(req)
-          JSON.parse(response.body)
+        response = http.request(req)
+
+        if response.code == "201"
+          json = JSON.parse(response.body)
+          json["objects"] || json
+        else
+          raise Trakstar::Error, "Error creating #{resource}: #{response.body}" 
         end
 
-        json["objects"] || json
       end
     end
 
@@ -81,12 +84,14 @@ module Trakstar
         req.content_type = "application/json; charset=UTF-8"
         req.body = data.to_json
 
-        json = Trakstar.retries_and_backs_off do
-          response = http.request(req)
-          JSON.parse(response.body)
-        end
+        response = http.request(req)
 
-        json["objects"] || json
+        if response.code == "202"
+          json = JSON.parse(response.body)
+          json["objects"] || json
+        else
+          raise Trakstar::Error, "Error updating #{resource}: #{response.body}" 
+        end
       end
     end
 

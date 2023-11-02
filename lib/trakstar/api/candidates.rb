@@ -37,8 +37,7 @@ module Trakstar
             attrs[:description] = source.delete(:description)
             attrs[:phone] = source.delete(:phone)
             attrs[:profile_data] = []
-            attrs[:profile_data] = 
-            attrs[:profile_data] = source.map { |key, value| { name: key.to_s, value: value } }
+            attrs[:profile_data] = source.map { |key, value| { name: key.to_s, value: value.to_s } }
           end
 
           attrs
