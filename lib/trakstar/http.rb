@@ -95,6 +95,22 @@ module Trakstar
       end
     end
 
+    def self.delete(resource)
+      uri = URI(BASE_URL + resource)
+      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+        req = Net::HTTP::Delete.new(uri)
+        req.basic_auth(Trakstar.config.api_token, nil)
+
+        response = http.request(req)
+
+        if response.code == "204"
+          return true
+        else
+          raise Trakstar::Error, "Error deleting #{resource}: #{response.body}" 
+        end
+      end
+    end
+
 
     private
     def self.wait_for_limit

@@ -78,4 +78,8 @@ module Trakstar
   def self.update_candidate(api_id, attributes)
     Api::Candidates.update(api_id, attributes)
   end
+
+  def self.delete_candidate(api_id)
+    Api::Candidates.delete(api_id)
+  end
 end

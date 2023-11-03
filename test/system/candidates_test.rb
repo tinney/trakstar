@@ -90,4 +90,25 @@ class CandidatesTest < Minitest::Test
       end
     end
   end
+
+  def test_candidate_delete
+    VCR.use_cassette("delete_candidate") do
+        candidate_id = 55280567
+        Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
+        response = Trakstar.delete_candidate(candidate_id)
+        assert_equal true, response
+    end
+  end
+
+  def test_candidate_delete_error
+    VCR.use_cassette("delete_candidate_error") do
+      begin
+        bad_id = 123456789
+        Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
+        Trakstar.delete_candidate(bad_id)
+      rescue Trakstar::Error => e
+        assert_equal "Error deleting /candidates/123456789: {\"message\": \"The requested resource could not be found\"}", e.message
+      end
+    end
+  end
 end

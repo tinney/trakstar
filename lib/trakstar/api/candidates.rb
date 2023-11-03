@@ -7,6 +7,10 @@ module Trakstar
   module Api
     class Candidates
       class << self
+        def delete(api_id)
+          Http.delete("/candidates/#{api_id}")
+        end
+
         def update(api_id, attributes)
           data = Http.patch("/candidates/#{api_id}", format_attributes_for_api(attributes))
 
