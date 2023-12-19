@@ -76,6 +76,7 @@ module Trakstar
             candidate.email = data["email"]
             candidate.first_name = data["first_name"]
             candidate.last_name = data["last_name"]
+            candidate.phone = data["phone"]
             candidate.opening_id = data["opening_id"]
             candidate.created_at = data["created_date"]
             candidate.updated_at = data["updated_date"]
