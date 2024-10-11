@@ -33,6 +33,10 @@ Or install it yourself as:
       Trakstar.candidates  # query to find all the candidates
 ```
 
+## Running Test
+
+In order to run the test suite run the `rake test` command
+
 # Rate limit
 
 # Pagination
@@ -40,10 +44,10 @@ Or install it yourself as:
 class BackloadingStruct < Struct
 def self.requires_backload(attr_names)
 attr_names.each define_method
-if loaded?
+if defined
 return instance_variable_get("@#{attr_name}")
 else
-load_detail!
+sync!
 end
 end
 end

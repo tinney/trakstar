@@ -19,14 +19,12 @@ module Trakstar
       def self.sync(opening)
         data = Http.get("/openings/#{opening.api_id}")
         set!(opening, data)
-        opening.loaded!
       end
 
       def self.find(api_id)
         data = Http.get("/openings/#{api_id}")
         Opening.new.tap do |opening|
           set!(opening, data)
-          opening.loaded!
         end
       end
 

@@ -4,20 +4,12 @@ module Trakstar
       attr_accessor :api_id, :sync
 
       def get(attr)
-        sync.call unless loaded?
+        sync.call if instance_variable_get("@#{attr}").nil?
         instance_variable_get("@#{attr}")
       end
 
       def set(attr, val)
         instance_variable_set("@#{attr}", val)
-      end
-
-      def loaded!
-        @loaded = true
-      end
-
-      def loaded?
-        @loaded
       end
 
       class << self
@@ -39,10 +31,6 @@ module Trakstar
           end
         end
       end
-
-      private
-
-      attr_accessor :loaded
     end
   end
 end

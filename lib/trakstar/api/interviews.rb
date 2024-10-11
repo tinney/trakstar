@@ -6,8 +6,9 @@ module Trakstar
   module Api
     class Interviews
       class << self
-        def all(candidate_id)
-          Http.get_all("/interviews", query_params: {candidate_id: candidate_id}).map do |data|
+        def all(candidate_id=nil)
+          query_params = candidate_id ? {candidate_id: candidate_id} : {}
+          Http.get_all("/interviews", query_params: query_params).map do |data|
             set!(Interview.new, data)
           end
         end
@@ -16,14 +17,12 @@ module Trakstar
           data = Trakstar::Http.get("/interviews/#{api_id}")
           Interview.new.tap do |interview|
             set!(interview, data)
-            interview.loaded!
           end
         end
 
         def sync(model)
           data = Http.get("/interviews/#{model.api_id}")
           set!(model, data)
-          model.loaded!
           model
         end
 

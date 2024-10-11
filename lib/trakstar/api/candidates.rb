@@ -16,7 +16,6 @@ module Trakstar
 
           Candidate.new.tap do |candidate|
             set!(candidate, data)
-            candidate.loaded!
           end
         end
 
@@ -25,7 +24,6 @@ module Trakstar
 
           Candidate.new.tap do |candidate|
             set!(candidate, data)
-            candidate.loaded!
           end
         end
 
@@ -57,7 +55,6 @@ module Trakstar
           data = Trakstar::Http.get("/candidates/#{api_id}")
           Candidate.new.tap do |candidate|
             set!(candidate, data)
-            candidate.loaded!
           end
         end
 
@@ -65,7 +62,6 @@ module Trakstar
         def sync(model)
           data = Http.get("/candidates/#{model.api_id}")
           set!(model, data)
-          model.loaded!
           model
         end
 
