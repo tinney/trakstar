@@ -44,7 +44,7 @@ module Trakstar
   end
 
   def self.interviews(candidate_id=nil)
-    Api::Interviews.all(candidate_id=nil)
+    Api::Interviews.all(candidate_id)
   end
 
   def self.interview(id)

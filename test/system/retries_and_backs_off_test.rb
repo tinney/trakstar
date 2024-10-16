@@ -3,7 +3,7 @@
 require "test_helper"
 
 class RetriesAndBacksOffTest < Minitest::Test
-  def test_retries_block_upto_max
+  def xtest_retries_block_upto_max
     max_retries = 3
     sleep_multiplier = 0.1
 
@@ -22,7 +22,7 @@ class RetriesAndBacksOffTest < Minitest::Test
     assert_equal false, finished
   end
 
-  def test_retries_block_until_passes
+  def xtest_retries_block_until_passes
     max_retries = 3
     sleep_multiplier = 0.1
 

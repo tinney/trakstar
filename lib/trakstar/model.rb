@@ -4,12 +4,18 @@ module Trakstar
       attr_accessor :api_id, :sync
 
       def get(attr)
-        sync.call if instance_variable_get("@#{attr}").nil?
+        sync_model if instance_variable_get("@#{attr}").nil?
         instance_variable_get("@#{attr}")
       end
 
       def set(attr, val)
         instance_variable_set("@#{attr}", val)
+      end
+
+      def sync_model
+        return if @synced
+        sync.call
+        @synced = true
       end
 
       class << self

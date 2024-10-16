@@ -1,7 +1,6 @@
 module Trakstar
   class Candidate < Models::Base
-    attr_accessor :first_name, :last_name, :email, :phone, :description, :stage_id, :opening_id, :created_at, :updated_at, :source, :source_type, :labels
-    synced_attr_accessor :state, :primary_language, :secondary_language, :profile_data, :resume_url, :labels
+    synced_attr_accessor :first_name, :last_name, :email, :phone, :description, :stage_id, :opening_id, :created_at, :updated_at, :source, :source_type, :labels, :state, :primary_language, :secondary_language, :profile_data, :resume_url
   end
 
   module Api

@@ -114,9 +114,7 @@ module Trakstar
 
     private
     def self.wait_for_limit
-      @last_request ||= Time.now
-
-      if (Time.now - @last_request) < 1
+      if @last_reqeust && (Time.now - @last_request) < 1
         sleep(SLEEP_FOR_LIMIT) # sleep for 0.2 seconds to avoid hitting the max
       end
 

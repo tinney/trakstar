@@ -22,4 +22,17 @@ class ModelTest < Minitest::Test
 
     assert_equal "Paul", my_model.name
   end
+
+  def test_calls_sync_is_only_called_once_even_when_attr_is_nil
+    my_model = MyModel.new
+    called = 0
+
+    my_model.sync = -> { called += 1 }
+
+    assert_equal 0, called
+    assert_nil my_model.name
+    assert_equal 1, called
+    assert_nil my_model.name
+    assert_equal 1, called
+  end
 end

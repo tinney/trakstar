@@ -1,7 +1,6 @@
 module Trakstar
   class Opening < Models::Base
-    attr_accessor :title, :state, :private, :tags
-    synced_attr_accessor :stages
+    synced_attr_accessor :title, :state, :private, :tags, :stages
   end
 
   class Stage < Models::Base
