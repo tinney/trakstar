@@ -6,8 +6,9 @@ module Trakstar
   module Api
     class Reviews
       class << self
-        def all(candidate_id)
-          Http.get_all("/reviews", query_params: {candidate_id: candidate_id}).map do |data|
+        def all(candidate_id = nil)
+          query_params = candidate_id ? {candidate_id: candidate_id} : {}
+          Http.get_all("/reviews", query_params: query_params).map do |data|
             set!(Review.new, data)
           end
         end
