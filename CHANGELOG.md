@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+## [1.4.0] - 2025-06-24
+- Make candidate_id optional in Reviews API - allows fetching all reviews without filtering by candidate
+
 ## [1.3.0] - 2025-06-24
 - Adds support for feedback on reviews
 
