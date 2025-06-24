@@ -19,6 +19,7 @@ module Trakstar
             review.reviewer_email = data.dig("reviewers", 0, "email")
             review.comment = data.dig("comments", 0, "message")
             review.created_at = data["date_created"]
+            review.feedback = data["feedback"]
           end
         end
       end
