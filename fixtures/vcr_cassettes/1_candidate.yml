@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.recruiterbox.com/v2/candidates/34005534
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.recruiterbox.com
+      Authorization:
+      - Basic OTIwZjllMzRjNmEyNDQwZTkwMWVhN2RlZDRhYjBkMzg6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 29 Oct 2025 14:54:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: '{"id":34005534,"opening_id":254644,"stage_id":2319330,"stage_name":"dolorum","email":"jackeline_farrell@bogisich.example","phone":"aut","first_name":"inventore","last_name":"voluptas","description":"Cloned
+        responsive array","profile_data":[{"name":"perferendis","value":"unde"},{"name":"eum","value":"illo"},{"name":"odit","value":"doloremque"}],"created_date":"2025-07-23","updated_date":1890992766,"resume":{"file_name":"dolorum","file_url":"quia"},"state":"Missouri","state_metadata":{"reason":null,"explanation":null},"labels":[{"id":528626,"name":"Java"},{"id":495522,"name":"React"}],"source":null,"source_type":"tempore","created_by":null,"assigned_to":{"id":267542,"name":"sed","email":"frankie@murazik-konopelski.test"}}'
+  recorded_at: Wed, 29 Oct 2025 14:54:30 GMT
+recorded_with: VCR 6.3.1

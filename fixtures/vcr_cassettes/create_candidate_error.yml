@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.recruiterbox.com/v2/candidates/
+    body:
+      encoding: UTF-8
+      string: '{"first_name":null,"last_name":null,"email":null,"source":null,"opening_id":null,"stage_id":null,"description":null,"phone":null,"profile_data":[]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.recruiterbox.com
+      Authorization:
+      - Basic OTIwZjllMzRjNmEyNDQwZTkwMWVhN2RlZDRhYjBkMzg6
+      Content-Type:
+      - application/json; charset=UTF-8
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 29 Oct 2025 14:43:12 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '75'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: '{"email":"This field is required","first_name":"This field is required"}'
+  recorded_at: Wed, 29 Oct 2025 14:43:12 GMT
+recorded_with: VCR 6.3.1

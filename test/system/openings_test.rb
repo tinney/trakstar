@@ -9,16 +9,17 @@ class OpeningsTest < Minitest::Test
       openings = Trakstar.openings
       staff_opening = openings.first
 
-      assert_equal 29, openings.count
+      assert_equal 40, openings.count
 
-      assert_equal "Software Consultant", staff_opening.title
-      assert_equal 592579, staff_opening.api_id
-      assert_equal "Ohio", staff_opening.state
+      # Note this is based on the faked VCR cassette data
+      assert_equal "Computer Software", staff_opening.title
+      assert_equal 678305, staff_opening.api_id
+      assert_equal "Wisconsin", staff_opening.state
       assert_equal false, staff_opening.private
 
-      assert_equal 13, staff_opening.stages.count
+      assert_equal 14, staff_opening.stages.count
       stage = staff_opening.stages.first
-      assert_equal 5217700, stage.api_id
+      assert_equal 5986001, stage.api_id
     end
   end
 end
