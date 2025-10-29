@@ -3,7 +3,7 @@ module Trakstar
     attr_accessor :api_token, :sleep_multiplier, :max_retry_attempts
 
     DEFAULT_SLEEP_MULTIPLIER = 2
-    DEFAULT_MAX_RETRY_ATTEMPTS = 10
+    DEFAULT_MAX_RETRY_ATTEMPTS = 3
 
     def set(**attrs)
       @api_token = attrs[:api_token] if attrs.key?(:api_token)

@@ -13,17 +13,15 @@ class InterviewsTest < Minitest::Test
 
       interview = interviews.first
 
-      assert_equal "Take Home Review", interview.title
+      assert_equal 2719855, interview.api_id
+      assert_equal "Pharmaceuticals", interview.title
+      assert_equal "Down-sized mission-critical middleware", interview.description
+      assert_equal 9458863971, interview.scheduled_at
+      assert_equal 5104353117, interview.created_at
+      assert_equal false, interview.is_cancelled
       assert_equal 41477722, interview.candidate_id
-      # assert_equal 465483, staff_opening.api_id
-      # assert_equal "Published", staff_opening.state
-      # assert_equal false, staff_opening.private
-
-      # assert_equal 15, staff_opening.stages.count
-
-      # stage = staff_opening.stages.first
-      # assert_equal 0, stage.position
-      # assert_equal 4093864, stage.api_id
+      assert_equal "shila@parisian.test", interview.interviewer_email
+      assert_equal 267541, interview.interviewer_id
     end
   end
 end

@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.recruiterbox.com/v2/candidates/123456789
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.recruiterbox.com
+      Authorization:
+      - Basic OTIwZjllMzRjNmEyNDQwZTkwMWVhN2RlZDRhYjBkMzg6
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 29 Oct 2025 14:43:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: '{"message":"The requested resource could not be found"}'
+  recorded_at: Wed, 29 Oct 2025 14:43:12 GMT
+recorded_with: VCR 6.3.1

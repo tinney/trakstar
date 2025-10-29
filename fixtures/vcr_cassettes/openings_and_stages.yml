@@ -1,0 +1,162 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.recruiterbox.com/v2/openings/?limit=100&offset=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.recruiterbox.com
+      Authorization:
+      - Basic OTIwZjllMzRjNmEyNDQwZTkwMWVhN2RlZDRhYjBkMzg6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 28 Oct 2025 21:09:02 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: '{"meta":{"offset":0,"limit":100,"total":40},"objects":[{"id":678305,"title":"Computer Software","description":"Object-based
+        composite model","location":"Maine","position_type":"Full Time","is_remote_allowed":true,"is_private":false,"is_archived":false,"application_email":"berna_dietrich@huels.example","hosted_url":"http://batz.example/carrol_roberts","created_date":"2025-01-15","modified_date":"2025-09-11","additional_fields":[{"name":"fugiat","value":"consequatur","is_private":true},{"name":"velit","value":"et","is_private":false}],"tags":["banjo","DIY","waistcoat"],"team":"typewriter","state":"Wisconsin","close_date":"2025-07-18"},{"id":677591,"title":"Sports","description":"Public-key
+        national intranet","location":"North Cassandraberg","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":true,"is_archived":true,"application_email":"denny@hodkiewicz.example","hosted_url":"http://schaden-miller.example/saran","created_date":"2025-09-10","modified_date":"2025-12-23","additional_fields":[{"name":"aut","value":"velit","is_private":true},{"name":"provident","value":"maxime","is_private":true}],"tags":["tattooed","semiotics","goth"],"team":"squid","state":"Colorado","close_date":"2025-01-11"},{"id":672865,"title":"Dairy","description":"Multi-lateral
+        needs-based intranet","location":"West Lady","position_type":"Full Time","is_remote_allowed":false,"is_private":true,"is_archived":false,"application_email":"keven@prohaska.example","hosted_url":"http://becker.example/roberto","created_date":"2025-09-03","modified_date":"2025-12-15","additional_fields":[{"name":"mollitia","value":"assumenda","is_private":true},{"name":"recusandae","value":"exercitationem","is_private":true}],"tags":["hashtag","seitan","dreamcatcher"],"team":"butcher","state":"Mississippi","close_date":"2025-05-06"},{"id":647596,"title":"Transportation
+        / Trucking / Railroad","description":"Monitored coherent matrices","location":"Dietrichmouth","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":true,"is_archived":true,"application_email":"jewel.torphy@corwin.test","hosted_url":"http://turcotte.example/eda","created_date":"2025-07-31","modified_date":"2025-09-20","additional_fields":[{"name":"deserunt","value":"velit","is_private":true},{"name":"rerum","value":"aut","is_private":false}],"tags":["mumblecore","wayfarers","waistcoat"],"team":"butcher","state":"New
+        Hampshire","close_date":"2025-05-12"},{"id":631050,"title":"Automotive","description":"Distributed
+        4th generation capability","location":"Croninborough","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":true,"is_archived":true,"application_email":"nella_balistreri@ortiz-altenwerth.example","hosted_url":"http://will-oreilly.example/willena.herzog","created_date":"2025-01-27","modified_date":"2025-10-11","additional_fields":[{"name":"temporibus","value":"totam","is_private":false},{"name":"molestias","value":"nobis","is_private":false}],"tags":["whatever","cleanse","tacos"],"team":"wolf","state":"Kentucky","close_date":"2025-07-19"},{"id":624850,"title":"Online
+        Media","description":"Enhanced optimizing complexity","location":"Vitochester","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"buster@bayer-crist.example","hosted_url":"http://hand.test/loria.lindgren","created_date":"2025-11-11","modified_date":"2025-06-24","additional_fields":[{"name":"similique","value":"dolores","is_private":true},{"name":"ut","value":"maxime","is_private":false}],"tags":["chicharrones","hoodie","XOXO"],"team":"etsy","state":"Rhode
+        Island","close_date":"2025-06-03"},{"id":624182,"title":"Accounting","description":"Cross-group
+        fresh-thinking hardware","location":"Herzogberg","position_type":"Full Time","is_remote_allowed":true,"is_private":true,"is_archived":false,"application_email":"ernest@kub.example","hosted_url":"http://sawayn.test/clora_hayes","created_date":"2025-06-14","modified_date":"2025-06-12","additional_fields":[{"name":"optio","value":"quibusdam","is_private":false},{"name":"culpa","value":"officia","is_private":false}],"tags":["gastropub","occupy","kombucha"],"team":"portland","state":"Washington","close_date":"2025-07-22"},{"id":623691,"title":"Printing","description":"Re-contextualized
+        actuating monitoring","location":"East Jessieton","position_type":"Full Time","is_remote_allowed":true,"is_private":false,"is_archived":false,"application_email":"sabine_volkman@lemke.test","hosted_url":"http://feest.example/lenny","created_date":"2025-12-20","modified_date":"2025-07-16","additional_fields":[{"name":"eum","value":"et","is_private":true},{"name":"sunt","value":"et","is_private":true}],"tags":["church-key","letterpress","neutra"],"team":"knausgaard","state":"Missouri","close_date":"2025-12-02"},{"id":619255,"title":"Civic
+        & Social Organization","description":"Advanced mission-critical neural-net","location":"Lake
+        Jeremyview","position_type":"Full Time","is_remote_allowed":false,"is_private":true,"is_archived":true,"application_email":"federico@grimes.test","hosted_url":"http://shanahan.example/marisha_morissette","created_date":"2025-09-21","modified_date":"2025-02-27","additional_fields":[{"name":"ducimus","value":"possimus","is_private":true},{"name":"totam","value":"ad","is_private":false}],"tags":["williamsburg","schlitz","cornhole"],"team":"helvetica","state":"New
+        Mexico","close_date":"2025-04-08"},{"id":615771,"title":"Investment Banking","description":"Mandatory
+        transitional focus group","location":"New Catricetown","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":true,"is_archived":false,"application_email":"thanh@wisoky-pollich.example","hosted_url":"http://anderson.test/jeanna.hyatt","created_date":"2025-03-16","modified_date":"2025-04-17","additional_fields":[{"name":"assumenda","value":"blanditiis","is_private":false},{"name":"dolore","value":"odio","is_private":true}],"tags":["ennui","hella","Thundercats"],"team":"portland","state":"New
+        York","close_date":"2025-02-25"},{"id":607626,"title":"Photography","description":"Customer-focused
+        needs-based artificial intelligence","location":"Saraside","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"duncan.mcclure@funk.example","hosted_url":"http://damore-toy.test/brendan","created_date":"2025-01-05","modified_date":"2025-04-07","additional_fields":[{"name":"voluptatibus","value":"maiores","is_private":true},{"name":"inventore","value":"natus","is_private":true}],"tags":["schlitz","humblebrag","lumbersexual"],"team":"etsy","state":"Utah","close_date":"2025-08-15"},{"id":599766,"title":"Government
+        Relations","description":"Polarised logistical task-force","location":"Fisherton","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"samira@volkman.test","hosted_url":"http://dubuque.test/harry_olson","created_date":"2025-02-02","modified_date":"2025-01-24","additional_fields":[{"name":"sit","value":"sint","is_private":false},{"name":"aut","value":"aspernatur","is_private":false}],"tags":["blog","PBR&B","shoreditch"],"team":"pug","state":"Wisconsin","close_date":"2025-05-01"},{"id":567528,"title":"Retail","description":"Exclusive
+        cohesive groupware","location":"Rennerborough","position_type":"Full Time","is_remote_allowed":true,"is_private":false,"is_archived":false,"application_email":"vernon@kshlerin.example","hosted_url":"http://jacobson.example/lamont.schmeler","created_date":"2025-02-06","modified_date":"2025-12-15","additional_fields":[{"name":"cumque","value":"quos","is_private":false},{"name":"at","value":"dolore","is_private":true}],"tags":["actually","organic","pickled"],"team":"williamsburg","state":"Indiana","close_date":"2025-08-08"},{"id":560415,"title":"Civil
+        Engineering","description":"Universal directional utilisation","location":"Bruenmouth","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":false,"is_archived":false,"application_email":"kristine@gibson.example","hosted_url":"http://goldner.example/alayna.klocko","created_date":"2025-04-20","modified_date":"2025-01-13","additional_fields":[{"name":"quos","value":"enim","is_private":true},{"name":"distinctio","value":"perspiciatis","is_private":true}],"tags":["carry","quinoa","sustainable"],"team":"chicharrones","state":"Montana","close_date":"2025-10-27"},{"id":557455,"title":"Military","description":"Universal
+        dynamic framework","location":"Rodside","position_type":"Full Time","is_remote_allowed":false,"is_private":false,"is_archived":true,"application_email":"eugene@fisher.example","hosted_url":"http://halvorson.example/mui_sanford","created_date":"2025-05-07","modified_date":"2025-11-16","additional_fields":[{"name":"quas","value":"sint","is_private":true},{"name":"sit","value":"et","is_private":false}],"tags":["health","fingerstache","narwhal"],"team":"chicharrones","state":"Maryland","close_date":"2025-09-13"},{"id":550748,"title":"Furniture","description":"Cloned
+        exuding frame","location":"East Lester","position_type":"Full Time","is_remote_allowed":true,"is_private":true,"is_archived":true,"application_email":"charlesetta@keebler.example","hosted_url":"http://feil-watsica.test/jorge_grant","created_date":"2025-10-03","modified_date":"2025-10-24","additional_fields":[{"name":"esse","value":"nesciunt","is_private":true},{"name":"sit","value":"quisquam","is_private":true}],"tags":["listicle","meggings","DIY"],"team":"irony","state":"Florida","close_date":"2025-09-08"},{"id":527143,"title":"Alternative
+        Dispute Resolution","description":"Balanced asymmetric paradigm","location":"Jeraldchester","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":false,"is_archived":false,"application_email":"tyler@hirthe.example","hosted_url":"http://torp.example/krystin","created_date":"2025-12-23","modified_date":"2025-05-27","additional_fields":[{"name":"maiores","value":"est","is_private":true},{"name":"fuga","value":"ullam","is_private":false}],"tags":["roof","carry","swag"],"team":"hammock","state":"California","close_date":"2025-07-27"},{"id":523357,"title":"Gambling
+        & Casinos","description":"Up-sized incremental groupware","location":"Port
+        Season","position_type":"Full Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"blake@reynolds.test","hosted_url":"http://wolff-fadel.example/chanda.rath","created_date":"2025-10-11","modified_date":"2025-01-11","additional_fields":[{"name":"rem","value":"vel","is_private":true},{"name":"ut","value":"et","is_private":true}],"tags":["marfa","freegan","lomo"],"team":"gluten-free","state":"Minnesota","close_date":"2025-11-22"},{"id":517645,"title":"Airlines
+        / Aviation","description":"Quality-focused non-volatile product","location":"North
+        Isrealland","position_type":"Full Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"freeman@bogan.test","hosted_url":"http://stark.example/chris","created_date":"2025-11-20","modified_date":"2025-11-11","additional_fields":[{"name":"esse","value":"non","is_private":false},{"name":"perferendis","value":"nam","is_private":true}],"tags":["meggings","marfa","bespoke"],"team":"tattooed","state":"Minnesota","close_date":"2025-05-11"},{"id":502078,"title":"Shipbuilding","description":"Cross-group
+        eco-centric moderator","location":"Port Lylaside","position_type":"Full Time","is_remote_allowed":true,"is_private":false,"is_archived":true,"application_email":"laurie_bauch@russel.test","hosted_url":"http://kuhic.example/trinity.mckenzie","created_date":"2025-07-24","modified_date":"2025-06-25","additional_fields":[{"name":"quo","value":"velit","is_private":false},{"name":"ipsa","value":"reiciendis","is_private":true}],"tags":["mixtape","gastropub","carry"],"team":"meggings","state":"Kentucky","close_date":"2025-07-26"},{"id":501975,"title":"Apparel
+        & Fashion","description":"Integrated dynamic internet solution","location":"Lake
+        Freddie","position_type":"Full Time","is_remote_allowed":false,"is_private":false,"is_archived":true,"application_email":"staci@corkery.test","hosted_url":"http://cole-metz.example/kennith_mcdermott","created_date":"2025-12-06","modified_date":"2025-07-05","additional_fields":[{"name":"labore","value":"porro","is_private":true},{"name":"recusandae","value":"ut","is_private":true}],"tags":["pickled","whatever","lomo"],"team":"lo-fi","state":"Ohio","close_date":"2025-12-21"},{"id":501962,"title":"Food
+        & Beverages","description":"Triple-buffered cohesive open architecture","location":"Horaciobury","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"elliott@kuhic-volkman.test","hosted_url":"http://considine.test/margarite.johns","created_date":"2025-04-30","modified_date":"2025-01-21","additional_fields":[{"name":"omnis","value":"odit","is_private":true},{"name":"qui","value":"voluptatem","is_private":false}],"tags":["banjo","90''s","offal"],"team":"actually","state":"Wisconsin","close_date":"2025-09-03"},{"id":501937,"title":"Government
+        Administration","description":"Realigned secondary capability","location":"Douglasfurt","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":false,"is_archived":true,"application_email":"joey.jast@pagac-monahan.test","hosted_url":"http://larkin.test/hank.robel","created_date":"2025-11-27","modified_date":"2025-12-14","additional_fields":[{"name":"nihil","value":"et","is_private":false},{"name":"deleniti","value":"voluptas","is_private":false}],"tags":["poutine","ugh","yr"],"team":"flexitarian","state":"Idaho","close_date":"2025-08-11"},{"id":499517,"title":"Libraries","description":"Enterprise-wide
+        eco-centric standardization","location":"Donnieview","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":false,"is_archived":true,"application_email":"jeanie.ledner@bosco.example","hosted_url":"http://lindgren.example/doloris","created_date":"2025-05-26","modified_date":"2025-02-10","additional_fields":[{"name":"non","value":"dolorem","is_private":true},{"name":"omnis","value":"enim","is_private":true}],"tags":["microdosing","marfa","heirloom"],"team":"kogi","state":"Illinois","close_date":"2025-11-05"},{"id":491831,"title":"Museums
+        and Institutions","description":"Decentralized bifurcated toolset","location":"Hahnport","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":true,"is_archived":false,"application_email":"efrain@keeling.example","hosted_url":"http://ziemann.example/savanna","created_date":"2025-10-13","modified_date":"2025-11-03","additional_fields":[{"name":"quasi","value":"minima","is_private":true},{"name":"explicabo","value":"aut","is_private":false}],"tags":["distillery","scenester","pour-over"],"team":"VHS","state":"New
+        Mexico","close_date":"2025-08-21"},{"id":465483,"title":"Alternative Medicine","description":"Switchable
+        solution-oriented open architecture","location":"Harrisshire","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"jalisa@boyer.test","hosted_url":"http://crooks-ziemann.example/yi","created_date":"2025-08-02","modified_date":"2025-07-04","additional_fields":[{"name":"saepe","value":"impedit","is_private":false},{"name":"officiis","value":"itaque","is_private":false}],"tags":["brunch","dreamcatcher","typewriter"],"team":"distillery","state":"Indiana","close_date":"2025-07-14"},{"id":448957,"title":"Electrical
+        / Electronic Manufacturing","description":"Total web-enabled capacity","location":"South
+        Kiarafort","position_type":"Full Time","is_remote_allowed":true,"is_private":false,"is_archived":true,"application_email":"kenneth@goldner-dach.example","hosted_url":"http://goldner.example/hoa","created_date":"2025-05-20","modified_date":"2025-05-29","additional_fields":[{"name":"eaque","value":"eligendi","is_private":true},{"name":"tempora","value":"omnis","is_private":true}],"tags":["schlitz","offal","mustache"],"team":"mustache","state":"New
+        York","close_date":"2025-07-14"},{"id":439820,"title":"Hospitality","description":"Enterprise-wide
+        human-resource projection","location":"Toddside","position_type":"Full Time","is_remote_allowed":true,"is_private":false,"is_archived":false,"application_email":"phil.king@ankunding.test","hosted_url":"http://dibbert.example/marta","created_date":"2025-08-05","modified_date":"2025-08-09","additional_fields":[{"name":"adipisci","value":"nesciunt","is_private":false},{"name":"consequatur","value":"corrupti","is_private":true}],"tags":["retro","meditation","viral"],"team":"whatever","state":"Kentucky","close_date":"2025-01-01"},{"id":438014,"title":"Internet","description":"Robust
+        impactful matrix","location":"West Fredericshire","position_type":"Full Time","is_remote_allowed":false,"is_private":false,"is_archived":true,"application_email":"conchita@bruen.example","hosted_url":"http://brown-powlowski.test/oralee.johnston","created_date":"2025-08-30","modified_date":"2025-03-24","additional_fields":[{"name":"laboriosam","value":"excepturi","is_private":false},{"name":"ipsa","value":"voluptatem","is_private":true}],"tags":["fingerstache","quinoa","everyday"],"team":"kogi","state":"Washington","close_date":"2025-11-25"},{"id":427042,"title":"Maritime","description":"Public-key
+        incremental superstructure","location":"Warrenside","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":true,"application_email":"evelia@ankunding.test","hosted_url":"http://wiegand.example/hilton.kerluke","created_date":"2025-10-24","modified_date":"2025-11-12","additional_fields":[],"tags":["meggings","flexitarian","butcher"],"team":"mixtape","state":"Iowa","close_date":"2025-12-09"},{"id":422514,"title":"Defense
+        & Space","description":"Networked non-volatile database","location":"Mitchellland","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":true,"is_archived":true,"application_email":"loyd@grant-wehner.example","hosted_url":"http://greenfelder.test/gregg","created_date":"2025-01-13","modified_date":"2025-09-07","additional_fields":[],"tags":["bitters","helvetica","pug"],"team":"plaid","state":"Mississippi","close_date":"2025-11-01"},{"id":416310,"title":"Sporting
+        Goods","description":"Networked impactful flexibility","location":"Lake Elmerfurt","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":true,"is_archived":false,"application_email":"mike_kozey@deckow.test","hosted_url":"http://padberg-jast.test/berry","created_date":"2025-01-04","modified_date":"2025-12-17","additional_fields":[],"tags":["gluten-free","keffiyeh","echo"],"team":"ramps","state":"West
+        Virginia","close_date":"2025-07-13"},{"id":412672,"title":"Insurance","description":"Devolved
+        systematic capability","location":"Predovicport","position_type":"Full Time","is_remote_allowed":true,"is_private":true,"is_archived":true,"application_email":"donny_fay@spencer.example","hosted_url":"http://kirlin.example/tanner.okuneva","created_date":"2025-02-12","modified_date":"2025-05-10","additional_fields":[],"tags":["normcore","polaroid","meggings"],"team":"tousled","state":"Michigan","close_date":"2025-11-08"},{"id":390712,"title":"Civil
+        Engineering","description":"Monitored intangible solution","location":"Liannechester","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"lucio.conroy@balistreri.example","hosted_url":"http://prosacco-schultz.example/robin.hand","created_date":"2025-03-05","modified_date":"2025-06-07","additional_fields":[],"tags":["paleo","narwhal","normcore"],"team":"slow-carb","state":"New
+        Hampshire","close_date":"2025-09-04"},{"id":382478,"title":"Education Management","description":"Quality-focused
+        zero tolerance workforce","location":"New Eleanorfurt","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":true,"application_email":"maryalice.runolfsson@williamson.example","hosted_url":"http://glover.test/oretha.moore","created_date":"2025-12-21","modified_date":"2025-11-15","additional_fields":[],"tags":["wolf","pour-over","ethical"],"team":"try-hard","state":"Arizona","close_date":"2025-02-02"},{"id":357520,"title":"Nanotechnology","description":"Pre-emptive
+        6th generation flexibility","location":"Calandraberg","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":true,"application_email":"janene@klein-schneider.test","hosted_url":"http://toy.test/christeen","created_date":"2025-02-11","modified_date":"2025-10-04","additional_fields":[],"tags":["slow-carb","etsy","plaid"],"team":"portland","state":"New
+        Hampshire","close_date":"2025-01-09"},{"id":332205,"title":"Building Materials","description":"Robust
+        context-sensitive hardware","location":"Calandraville","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":false,"is_archived":false,"application_email":"pennie@corwin.example","hosted_url":"http://heaney.test/argelia","created_date":"2025-10-26","modified_date":"2025-03-10","additional_fields":[],"tags":["wolf","kitsch","sriracha"],"team":"slow-carb","state":"Minnesota","close_date":"2025-07-30"},{"id":290069,"title":"Media
+        Production","description":"Fundamental needs-based benchmark","location":"Hellerhaven","position_type":"Full
+        Time","is_remote_allowed":true,"is_private":false,"is_archived":false,"application_email":"nannie@ziemann-baumbach.example","hosted_url":"http://cummerata.test/sherice_bogan","created_date":"2025-08-17","modified_date":"2025-06-09","additional_fields":[],"tags":["pop-up","stumptown","+1"],"team":"venmo","state":"Texas","close_date":"2025-09-05"},{"id":276188,"title":"Nonprofit
+        Organization Management","description":"Polarised background capability","location":"Rodriguezland","position_type":"Full
+        Time","is_remote_allowed":false,"is_private":false,"is_archived":true,"application_email":"duane.schaefer@kiehn.test","hosted_url":"http://schneider.test/sharika","created_date":"2025-08-02","modified_date":"2025-10-05","additional_fields":[],"tags":["narwhal","migas","readymade"],"team":"poutine","state":"Alabama","close_date":"2025-06-16"},{"id":254644,"title":"Chemicals","description":"Configurable
+        explicit database","location":"Yostmouth","position_type":"Full Time","is_remote_allowed":false,"is_private":false,"is_archived":false,"application_email":"karyn@harber.test","hosted_url":"http://haag-mueller.example/kelvin_emard","created_date":"2025-11-18","modified_date":"2025-01-20","additional_fields":[],"tags":["chartreuse","venmo","everyday"],"team":"butcher","state":"Florida","close_date":"2025-04-01"}]}'
+  recorded_at: Tue, 28 Oct 2025 21:09:02 GMT
+- request:
+    method: get
+    uri: https://api.recruiterbox.com/v2/openings/678305
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.recruiterbox.com
+      Authorization:
+      - Basic OTIwZjllMzRjNmEyNDQwZTkwMWVhN2RlZDRhYjBkMzg6
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 28 Oct 2025 21:09:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: '{"id":678305,"title":"Public Relations and Communications","description":"Organized
+        holistic archive","location":"Hodkiewiczton","position_type":"Full Time","is_remote_allowed":true,"is_private":false,"is_archived":true,"application_email":"kelley_turcotte@feest.test","hosted_url":"http://kuhlman.test/kendall","created_date":"2025-03-10","modified_date":"2025-06-24","stages":[{"id":5986001,"name":"quis","type":null,"is_prospecting":false,"position":6416101345},{"id":5986904,"name":"nesciunt","type":null,"is_prospecting":false,"position":3574899704},{"id":5986002,"name":"nisi","type":"sed","is_prospecting":false,"position":3576105053},{"id":5986003,"name":"aperiam","type":"aliquam","is_prospecting":false,"position":1105878233},{"id":5986005,"name":"consequatur","type":null,"is_prospecting":true,"position":8425816580},{"id":5986905,"name":"ad","type":"enim","is_prospecting":false,"position":6355835885},{"id":5986006,"name":"ad","type":null,"is_prospecting":true,"position":1970558015},{"id":5986908,"name":"quasi","type":null,"is_prospecting":false,"position":6667072204},{"id":5986906,"name":"qui","type":"aspernatur","is_prospecting":false,"position":8502864679},{"id":5986909,"name":"aliquam","type":null,"is_prospecting":false,"position":9372394134},{"id":5986907,"name":"possimus","type":"occaecati","is_prospecting":false,"position":7134396722},{"id":5986910,"name":"sit","type":null,"is_prospecting":false,"position":8227287825},{"id":5986004,"name":"repellendus","type":null,"is_prospecting":false,"position":2638169252},{"id":5986911,"name":"quis","type":null,"is_prospecting":false,"position":7094235951}],"application_form_fields":[{"name":"sunt","display_name":"hic","type":"aliquam","choices":["et","dignissimos"],"is_required":false,"is_disabled":false,"position":2211658436},{"name":"est","display_name":"tempora","type":"consequatur","choices":[],"is_required":true,"is_disabled":false,"position":5150573864},{"name":"illo","display_name":"saepe","type":"voluptatem","choices":[],"is_required":false,"is_disabled":false,"position":7160958116},{"name":"explicabo","display_name":"at","type":"incidunt","choices":["exercitationem","commodi"],"is_required":true,"is_disabled":false,"position":6402956308},{"name":"fugiat","display_name":"tempore","type":"accusamus","choices":[],"is_required":true,"is_disabled":false,"position":6023734181},{"name":"dolor","display_name":"et","type":"nesciunt","choices":[],"is_required":true,"is_disabled":false,"position":6042221142},{"name":"aliquam","display_name":"eum","type":"natus","choices":["non","atque"],"is_required":true,"is_disabled":false,"position":9917428707},{"name":"incidunt","display_name":"dolores","type":"dolor","choices":[],"is_required":true,"is_disabled":false,"position":2621750229},{"name":"et","display_name":"esse","type":"similique","choices":["modi","nisi"],"is_required":false,"is_disabled":false,"position":2613725121},{"name":"doloribus","display_name":"praesentium","type":"incidunt","choices":["corrupti","ut"],"is_required":false,"is_disabled":false,"position":4719816629},{"name":"distinctio","display_name":"natus","type":"aut","choices":["recusandae","reiciendis"],"is_required":true,"is_disabled":false,"position":2256862044},{"name":"qui","display_name":"sit","type":"expedita","choices":["nihil","labore"],"is_required":true,"is_disabled":false,"position":2617727784},{"name":"excepturi","display_name":"aliquam","type":"sed","choices":["numquam","sit"],"is_required":true,"is_disabled":false,"position":3135220763},{"name":"sint","display_name":"rerum","type":"aut","choices":["impedit","eum"],"is_required":true,"is_disabled":false,"position":3010457476},{"name":"quasi","display_name":"a","type":"placeat","choices":["atque","non"],"is_required":true,"is_disabled":false,"position":4529796926},{"name":"enim","display_name":"facere","type":"provident","choices":["non","et"],"is_required":true,"is_disabled":false,"position":7883426983}],"additional_fields":[{"name":"qui","value":"fuga","is_private":true},{"name":"quidem","value":"cum","is_private":true}],"tags":["Yuccie","blog","street"],"team":"umami","state":"New
+        Jersey","close_date":"2025-04-09"}'
+  recorded_at: Tue, 28 Oct 2025 21:09:03 GMT
+recorded_with: VCR 6.3.1
