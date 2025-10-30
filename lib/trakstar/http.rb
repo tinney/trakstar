@@ -5,7 +5,7 @@ module Trakstar
   module Http
     BASE_URL = "https://api.recruiterbox.com/v2"
     LIMIT = 100
-    SLEEP_FOR_LIMIT = 0.3 # limit to 3 requests a second
+    SLEEP_FOR_LIMIT = 0.6 # limit to 100 requests a minute
 
     def self.get_all(resource, offset: 0, query_params: {})
       wait_for_limit
@@ -114,10 +114,8 @@ module Trakstar
 
     private
     def self.wait_for_limit
-      if @last_reqeust && (Time.now - @last_request) < 1
-        sleep(SLEEP_FOR_LIMIT) # sleep for 0.2 seconds to avoid hitting the max
-      end
-
+      # if request was made less than a second ago, sleep
+      sleep(SLEEP_FOR_LIMIT) if @last_reqeust && (Time.now - @last_request) < 1
       @last_request = Time.now
     end
   end

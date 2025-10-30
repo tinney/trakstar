@@ -23,7 +23,7 @@ module Trakstar
   end
 
   def self.retries_and_backs_off(&block)
-    @retries_and_backs_off ||= RetriesAndBacksOff.new(max_retries: config.max_retry_attempts, sleep_multiplier: config.sleep_multiplier)
+    @retries_and_backs_off ||= RetriesAndBacksOff.new(max_retries: config.max_retry_attempts, time_between_failed_requests: config.time_between_failed_requests)
     @retries_and_backs_off.call(&block)
   end
 
