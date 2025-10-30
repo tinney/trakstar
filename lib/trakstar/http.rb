@@ -115,7 +115,11 @@ module Trakstar
     private
     def self.wait_for_limit
       # if request was made less than a second ago, sleep
-      sleep(SLEEP_FOR_LIMIT) if @last_reqeust && (Time.now - @last_request) < 1
+      if @last_request && (Time.now - @last_request) < 1
+        puts "Rate limit hit, sleeping..."
+        sleep(SLEEP_FOR_LIMIT) 
+      end
+
       @last_request = Time.now
     end
   end
