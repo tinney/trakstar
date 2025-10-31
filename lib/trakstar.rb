@@ -56,7 +56,6 @@ module Trakstar
   end
 
   def self.evaluations(candidate_id)
-    puts "getting evaluations for candidate #{candidate_id}"
     Api::Evaluations.all(candidate_id)
   end
 

@@ -7,117 +7,120 @@ module Trakstar
     LIMIT = 100
     SLEEP_FOR_LIMIT = 0.6 # limit to 100 requests a minute
 
-    def self.get_all(resource, offset: 0, query_params: {})
-      wait_for_limit
+    class << self
+      def get_all(resource, offset: 0, query_params: {})
+        wait_for_limit
 
-      params = query_params.map { |key, value| "#{key}=#{value}" }.join("&")
-      uri = URI(BASE_URL + resource + "/?limit=#{LIMIT}&offset=#{offset}&#{params}")
+        params = query_params.map { |key, value| "#{key}=#{value}" }.join("&")
+        uri = URI(BASE_URL + resource + "/?limit=#{LIMIT}&offset=#{offset}&#{params}")
 
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        # Note: JSON will fail as the response body is just a string
-        json = Trakstar.retries_and_backs_off do
-          req = Net::HTTP::Get.new(uri)
-          req.basic_auth(Trakstar.config.api_token, nil)
-          response = http.request(req)
-          JSON.parse(response.body)
-        end
-
-        if (results = json["objects"])
-          total = json.dig("meta", "total")
-          current_count = offset + results.count
-
-          if total > current_count
-            results += get_all(resource, offset: current_count, query_params: query_params)
+        Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+          # Note: JSON will fail as the response body is just a string
+          json = Trakstar.retries_and_backs_off do
+            req = Net::HTTP::Get.new(uri)
+            req.basic_auth(Trakstar.config.api_token, nil)
+            response = http.request(req)
+            JSON.parse(response.body)
           end
 
-          return results
-        else
-          return []
+          if (results = json["objects"])
+            total = json.dig("meta", "total")
+            current_count = offset + results.count
+
+            if total > current_count
+              results += get_all(resource, offset: current_count, query_params: query_params)
+            end
+
+            return results
+          else
+            return []
+          end
         end
       end
-    end
 
-    def self.get(resource)
-      wait_for_limit
+      def get(resource)
+        wait_for_limit
 
-      uri = URI(BASE_URL + resource)
+        uri = URI(BASE_URL + resource)
 
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        json = Trakstar.retries_and_backs_off do
-          req = Net::HTTP::Get.new(uri)
+        Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+          json = Trakstar.retries_and_backs_off do
+            req = Net::HTTP::Get.new(uri)
+            req.basic_auth(Trakstar.config.api_token, nil)
+            response = http.request(req)
+            JSON.parse(response.body)
+          end
+
+          json["objects"] || json
+        end
+      end
+
+      def post(resource, data)
+        uri = URI(BASE_URL + resource)
+        Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+          req = Net::HTTP::Post.new(uri)
           req.basic_auth(Trakstar.config.api_token, nil)
+          req.content_type = "application/json; charset=UTF-8"
+          req.body = data.to_json
+
           response = http.request(req)
-          JSON.parse(response.body)
-        end
 
-        json["objects"] || json
-      end
-    end
-
-    def self.post(resource, data)
-      uri = URI(BASE_URL + resource)
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        req = Net::HTTP::Post.new(uri)
-        req.basic_auth(Trakstar.config.api_token, nil)
-        req.content_type = "application/json; charset=UTF-8"
-        req.body = data.to_json
-
-        response = http.request(req)
-
-        if response.code == "201"
-          json = JSON.parse(response.body)
-          json["objects"] || json
-        else
-          raise Trakstar::Error, "Error creating #{resource}: #{response.body}"
+          if response.code == "201"
+            json = JSON.parse(response.body)
+            json["objects"] || json
+          else
+            raise Trakstar::Error, "Error creating #{resource}: #{response.body}"
+          end
         end
       end
-    end
 
-    def self.patch(resource, data)
-      uri = URI(BASE_URL + resource)
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        req = Net::HTTP::Patch.new(uri)
-        req.basic_auth(Trakstar.config.api_token, nil)
-        req.content_type = "application/json; charset=UTF-8"
-        req.body = data.to_json
+      def patch(resource, data)
+        uri = URI(BASE_URL + resource)
+        Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+          req = Net::HTTP::Patch.new(uri)
+          req.basic_auth(Trakstar.config.api_token, nil)
+          req.content_type = "application/json; charset=UTF-8"
+          req.body = data.to_json
 
-        response = http.request(req)
+          response = http.request(req)
 
-        if response.code == "202"
-          json = JSON.parse(response.body)
-          json["objects"] || json
-        else
-          raise Trakstar::Error, "Error updating #{resource}: #{response.body}"
+          if response.code == "202"
+            json = JSON.parse(response.body)
+            json["objects"] || json
+          else
+            raise Trakstar::Error, "Error updating #{resource}: #{response.body}"
+          end
         end
       end
-    end
 
-    def self.delete(resource)
-      uri = URI(BASE_URL + resource)
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        req = Net::HTTP::Delete.new(uri)
-        req.basic_auth(Trakstar.config.api_token, nil)
+      def delete(resource)
+        uri = URI(BASE_URL + resource)
+        Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+          req = Net::HTTP::Delete.new(uri)
+          req.basic_auth(Trakstar.config.api_token, nil)
 
-        response = http.request(req)
+          response = http.request(req)
 
-        if response.code == "204"
-          return true
-        else
-          raise Trakstar::Error, "Error deleting #{resource}: #{response.body}"
+          if response.code == "204"
+            return true
+          else
+            raise Trakstar::Error, "Error deleting #{resource}: #{response.body}"
+          end
         end
       end
-    end
 
-    private_class_method
+      private
 
-    def self.wait_for_limit
-      # if request was made less than a second ago, sleep
-      if @last_request && (Time.now - @last_request) < 1
-        puts "Rate limit hit, sleeping..."
-        sleep(SLEEP_FOR_LIMIT)
+      def wait_for_limit
+        # if request was made less than a second ago, sleep
+        return if ENV['TEST_MODE']
+        if @last_request && (Time.now - @last_request) < 1
+          puts "Last Request too recent - Waiting to avoid rate limit."
+          sleep(SLEEP_FOR_LIMIT)
+        end
+
+        @last_request = Time.now
       end
-
-      @last_request = Time.now
     end
   end
 end
