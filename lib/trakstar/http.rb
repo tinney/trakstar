@@ -14,11 +14,10 @@ module Trakstar
       uri = URI(BASE_URL + resource + "/?limit=#{LIMIT}&offset=#{offset}&#{params}")
 
       Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        req = Net::HTTP::Get.new(uri)
-        req.basic_auth(Trakstar.config.api_token, nil)
-
         # Note: JSON will fail as the response body is just a string
         json = Trakstar.retries_and_backs_off do
+          req = Net::HTTP::Get.new(uri)
+          req.basic_auth(Trakstar.config.api_token, nil)
           response = http.request(req)
           JSON.parse(response.body)
         end
@@ -44,10 +43,9 @@ module Trakstar
       uri = URI(BASE_URL + resource)
 
       Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        req = Net::HTTP::Get.new(uri)
-        req.basic_auth(Trakstar.config.api_token, nil)
-
         json = Trakstar.retries_and_backs_off do
+          req = Net::HTTP::Get.new(uri)
+          req.basic_auth(Trakstar.config.api_token, nil)
           response = http.request(req)
           JSON.parse(response.body)
         end
