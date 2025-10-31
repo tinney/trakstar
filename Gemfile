@@ -12,6 +12,7 @@ group :development, :test do
   gem "dotenv"
   gem "minitest", "~> 5.0"
   gem "standard", "~> 1.3"
+  gem "racc"
   gem "webmock"
   gem "vcr"
   gem "faker"
