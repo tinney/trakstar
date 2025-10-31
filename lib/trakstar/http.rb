@@ -113,7 +113,7 @@ module Trakstar
 
       def wait_for_limit
         # if request was made less than a second ago, sleep
-        return if ENV['TEST_MODE']
+        return if ENV["TEST_MODE"]
         if @last_request && (Time.now - @last_request) < 1
           puts "Last Request too recent - Waiting to avoid rate limit."
           sleep(SLEEP_FOR_LIMIT)
