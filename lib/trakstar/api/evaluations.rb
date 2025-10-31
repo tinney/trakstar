@@ -23,7 +23,7 @@ module Trakstar
             interviewer_id = overall_feedback.dig("submitted_by", "id")
             overall_rating = overall_feedback["rating"]
             date_submitted = overall_feedback["date_submitted"]
-          elsif data["feedback"] && data["feedback"].any?
+          elsif data["feedback"]&.any?
             first_feedback = data["feedback"].first
             interviewer_id = first_feedback.dig("submitted_by", "id")
             overall_rating = first_feedback["rating"]
@@ -61,7 +61,6 @@ module Trakstar
     end
   end
 end
-
 
 # {
 #   "meta": {
@@ -237,8 +236,4 @@ end
 #       "candidate_id": 67170206
 #     }
 #   ]
-# } 
-
-
-
-
+# }

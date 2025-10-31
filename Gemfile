@@ -18,5 +18,5 @@ group :test do
   gem "webmock"
   gem "vcr"
   gem "faker"
-  gem 'pry-byebug'
+  gem "pry-byebug"
 end

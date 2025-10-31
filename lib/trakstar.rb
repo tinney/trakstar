@@ -43,7 +43,7 @@ module Trakstar
     Api::Candidates.find(id)
   end
 
-  def self.interviews(candidate_id=nil)
+  def self.interviews(candidate_id = nil)
     Api::Interviews.all(candidate_id)
   end
 
@@ -51,7 +51,7 @@ module Trakstar
     Api::Interviews.find(id)
   end
 
-  def self.reviews(candidate_id=nil)
+  def self.reviews(candidate_id = nil)
     Api::Reviews.all(candidate_id)
   end
 

@@ -5,7 +5,7 @@ class RetriesAndBacksOff
   attr_reader :max_retries, :sleep_multiplier
   attr_accessor :error_messages
 
-  #todo remove sleep multiplier
+  # todo remove sleep multiplier
   def initialize(max_retries: MAX_RETRIES, time_between_failed_requests: DEFAULT_SLEEP)
     @time_between_failed_requests = time_between_failed_requests
     @max_retries = max_retries

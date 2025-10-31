@@ -70,9 +70,8 @@ module Trakstar
           json = JSON.parse(response.body)
           json["objects"] || json
         else
-          raise Trakstar::Error, "Error creating #{resource}: #{response.body}" 
+          raise Trakstar::Error, "Error creating #{resource}: #{response.body}"
         end
-
       end
     end
 
@@ -90,7 +89,7 @@ module Trakstar
           json = JSON.parse(response.body)
           json["objects"] || json
         else
-          raise Trakstar::Error, "Error updating #{resource}: #{response.body}" 
+          raise Trakstar::Error, "Error updating #{resource}: #{response.body}"
         end
       end
     end
@@ -106,18 +105,18 @@ module Trakstar
         if response.code == "204"
           return true
         else
-          raise Trakstar::Error, "Error deleting #{resource}: #{response.body}" 
+          raise Trakstar::Error, "Error deleting #{resource}: #{response.body}"
         end
       end
     end
 
+    private_class_method
 
-    private
     def self.wait_for_limit
       # if request was made less than a second ago, sleep
       if @last_request && (Time.now - @last_request) < 1
         puts "Rate limit hit, sleeping..."
-        sleep(SLEEP_FOR_LIMIT) 
+        sleep(SLEEP_FOR_LIMIT)
       end
 
       @last_request = Time.now

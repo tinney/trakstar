@@ -5,7 +5,6 @@ class MyModel < Trakstar::Models::Base
 end
 
 class ModelTest < Minitest::Test
-
   def test_that_it_only_syncs_empty_attributes
     my_model = MyModel.new
 

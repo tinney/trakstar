@@ -40,14 +40,14 @@ class CandidatesTest < Minitest::Test
 
   def test_candidate_can_be_created
     data = {
-      first_name: "Jaq", 
-      last_name: "Smith",
-      email: "jaq.smith@testdouble.com",
-      source: "API Source", 
-      opening_id: SSC_OPENING_ID, 
-      age: "30",
-      location: "USA",
-      level: nil,
+      :first_name => "Jaq",
+      :last_name => "Smith",
+      :email => "jaq.smith@testdouble.com",
+      :source => "API Source",
+      :opening_id => SSC_OPENING_ID,
+      :age => "30",
+      :location => "USA",
+      :level => nil,
       "Skill 1" => ["Ruby", "JavaScript"],
       "Skill 2" => []
     }
@@ -64,13 +64,13 @@ class CandidatesTest < Minitest::Test
 
   def xtest_candidate_can_be_updated
     data = {
-      first_name: "Jac", 
+      first_name: "Jac",
       last_name: "Perez",
       email: "jaq.perez@testdouble.com",
-      source: "API", 
-      opening_id: 599766, 
+      source: "API",
+      opening_id: 599766,
       age: "40",
-      location: "USA",
+      location: "USA"
     }
 
     VCR.use_cassette("update_candidate") do
@@ -83,36 +83,32 @@ class CandidatesTest < Minitest::Test
   end
 
   def test_candidate_raises_when_error
-    data = { }
+    data = {}
 
     VCR.use_cassette("create_candidate_error") do
-      begin
-        Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
-        Trakstar.create_candidate(data)
-      rescue Trakstar::Error => e
-        assert_equal "Error creating /candidates/: {\"email\":\"This field is required\",\"first_name\":\"This field is required\"}", e.message
-      end
+      Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
+      Trakstar.create_candidate(data)
+    rescue Trakstar::Error => e
+      assert_equal "Error creating /candidates/: {\"email\":\"This field is required\",\"first_name\":\"This field is required\"}", e.message
     end
   end
 
   def xtest_candidate_delete
     VCR.use_cassette("delete_candidate") do
-        candidate_id = 55280567
-        Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
-        response = Trakstar.delete_candidate(candidate_id)
-        assert_equal true, response
+      candidate_id = 55280567
+      Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
+      response = Trakstar.delete_candidate(candidate_id)
+      assert_equal true, response
     end
   end
 
   def test_candidate_delete_error
     VCR.use_cassette("delete_candidate_error") do
-      begin
-        bad_id = 123456789
-        Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
-        Trakstar.delete_candidate(bad_id)
-      rescue Trakstar::Error => e
-        assert_equal "Error deleting /candidates/123456789: {\"message\":\"The requested resource could not be found\"}", e.message
-      end
+      bad_id = 123456789
+      Trakstar.config(api_token: ENV["TRAKSTAR_API_KEY"])
+      Trakstar.delete_candidate(bad_id)
+    rescue Trakstar::Error => e
+      assert_equal "Error deleting /candidates/123456789: {\"message\":\"The requested resource could not be found\"}", e.message
     end
   end
 end
