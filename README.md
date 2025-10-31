@@ -2,8 +2,6 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/trakstar`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -25,8 +23,8 @@ Or install it yourself as:
 ```
       Trakstar.config(
         api_token: api_key,
-        sleep_multiplier: 3, # default 5 used as 5 ** retries to backoff
-        max_retry_attemps: 5 # default is 3
+        time_between_failed_requests: 60, # default 60 is used
+        max_retry_attemps: 5 # default is 3, this is how many retries after a failed atempt
       )
 
       Trakstar.openings  # query to find all the openings
@@ -39,60 +37,88 @@ In order to run the test suite run the `rake test` command
 
 # Rate limit
 
-# Pagination
+100 requests per minute. Rate limits are inplace to sleep for .6 seconds if a multiple requests are made within a single second
 
-class BackloadingStruct < Struct
-def self.requires_backload(attr_names)
-attr_names.each define_method
-if defined
-return instance_variable_get("@#{attr_name}")
-else
-sync!
-end
-end
-end
+# API
 
-Class Opening
-requires_backload :stages, :thing, :whatever
+## Openings
 
-    def load_detail
-        res = @connection.opening(@id)
-        @stages = res["stages"].map { |stage| Stage.new() }
-        @loaded = true
-        end
+```ruby
+# Get all openings
+Trakstar.openings
 
-end
+# Get a specific opening by ID
+Trakstar.opening(id)
+```
 
-Class Stage
-end
+## Candidates
 
-> opening = Trakstar::Opening.new
+```ruby
+# Get all candidates (supports optional parameters)
+Trakstar.candidates(opening_id: 123, status: 'active')
 
-conn = Trakstar.new(api_key: "x")
-conn.get_openings # load all openings
-conn.get_opening(id) # load one opening
+# Get a specific candidate by ID
+Trakstar.candidate(api_id)
 
-conn.candidates
-conn.candidates(opening: :opening_id)
-conn.candidates(state: :active)
-conn.candidate(id)
+# Create a new candidate
+Trakstar.create_candidate(
+  first_name: 'John',
+  last_name: 'Doe',
+  email: 'john.doe@example.com'
+)
 
-conn.interviews # free floating object w/ no opening or stage knowledge
-conn.interviews(candidate_id: :candidate_id) # free floating object w/ no opening or stage knowledge
-conn.interview(id) # free floating object w/ no opening or stage knowledge
+# Update an existing candidate
+Trakstar.update_candidate(api_id, 
+  first_name: 'Jane',
+  status: 'hired'
+)
 
-Opening has_many => Stages
-Stage => has_many :interviews (we lose id stage_id, candidate_id)
-Evaluation => interview has_many evaluations (we lose ids)
+# Delete a candidate
+Trakstar.delete_candidate(api_id)
+```
 
-Trakstar::Opening.all
+## Interviews
 
-# Openings fetch
+```ruby
+# Get all interviews (optionally filter by candidate_id)
+Trakstar.interviews
+Trakstar.interviews(candidate_id)
 
-# stages call will trigger an Opening.show(:trakstar_id)
+# Get a specific interview by ID
+Trakstar.interview(id)
+```
 
-Trakstar::Opening.get({:trakstar_id})
-Trakstar::Opening.show({:trakstar_id})
+## Reviews
+
+```ruby
+# Get all reviews (optionally filter by candidate_id)
+Trakstar.reviews
+Trakstar.reviews(candidate_id)
+```
+
+## Evaluations
+
+```ruby
+# Get all evaluations for a candidate
+Trakstar.evaluations(candidate_id)
+
+# Get a specific evaluation by ID
+Trakstar.evaluation(id)
+```
+
+## Messages
+
+```ruby
+# Get all messages for a candidate
+Trakstar.messages(candidate_id)
+```
+
+## Notes
+
+```ruby
+# Get all notes for a candidate
+Trakstar.notes(candidate_id)
+```
 
 ## License
 
