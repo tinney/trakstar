@@ -51,6 +51,34 @@ Trakstar.openings
 Trakstar.opening(id)
 ```
 
+Opening objects expose fields from the Trakstar Hire Opening Object, including:
+
+- `api_id`, `title`, `description`, `team`, `state`
+- `position_type`, `is_remote_allowed`
+- `location` (string or object depending on API response)
+- `location_city`, `location_state`, `location_zipcode`, `location_country`
+- `private`, `is_private`
+- `hosted_url`, `application_email`, `is_archived`
+- `created_at`, `updated_at`, `close_date`
+- `tags`
+
+Nested opening data:
+
+- `stages`: array of stage objects (`api_id`, `name`, `type`, `is_prospecting`, `position`)
+- `application_form_fields`: array of application form field objects (`name`, `display_name`, `type`, `choices`, `is_required`, `is_disabled`, `position`)
+- `additional_fields`: array of additional field objects (`name`, `value`, `is_private`)
+
+Example:
+
+```ruby
+opening = Trakstar.opening(678305)
+
+opening.title
+opening.position_type
+opening.application_form_fields.first.display_name
+opening.stages.first.is_prospecting
+```
+
 ## Candidates
 
 ```ruby

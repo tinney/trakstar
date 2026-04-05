@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+## [2.1.4] - 2026-04-04
+- Add support for additional Opening object fields, including stage prospecting state, application form fields, and additional fields.
+
 ## [1.4.0] - 2025-06-24
 - Make candidate_id optional in Reviews API - allows fetching all reviews without filtering by candidate
 
