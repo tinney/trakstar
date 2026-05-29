@@ -1,6 +1,6 @@
 module Trakstar
   class Candidate < Models::Base
-    synced_attr_accessor :first_name, :last_name, :email, :phone, :description, :stage_id, :opening_id, :created_at, :updated_at, :source, :source_type, :labels, :state, :primary_language, :secondary_language, :profile_data, :resume_url
+    synced_attr_accessor :first_name, :last_name, :email, :phone, :description, :stage_id, :stage_name, :opening_id, :created_at, :updated_at, :source, :source_type, :labels, :state, :state_metadata, :primary_language, :secondary_language, :profile_data, :resume_url, :resume_file_name, :created_by, :assigned_to
   end
 
   module Api
@@ -37,8 +37,11 @@ module Trakstar
             attrs[:stage_id] = source.delete(:stage_id)
             attrs[:description] = source.delete(:description)
             attrs[:phone] = source.delete(:phone)
-            attrs[:profile_data] = []
-            attrs[:profile_data] = source.map { |key, value| {name: key.to_s, value: value.to_s} }
+            attrs[:profile_data] = if source.key?(:profile_data)
+              source.delete(:profile_data)
+            else
+              source.map { |key, value| {name: key.to_s, value: value.to_s} }
+            end
           end
 
           attrs
@@ -72,6 +75,7 @@ module Trakstar
             candidate.first_name = data["first_name"]
             candidate.last_name = data["last_name"]
             candidate.phone = data["phone"]
+            candidate.description = data["description"]
             candidate.opening_id = data["opening_id"]
             candidate.created_at = data["created_date"]
             candidate.updated_at = data["updated_date"]

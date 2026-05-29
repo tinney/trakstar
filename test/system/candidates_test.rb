@@ -35,7 +35,37 @@ class CandidatesTest < Minitest::Test
 
       assert_equal TEST_CANDIDATE_ID, candidate.api_id
       assert_equal ["Java", "React"], candidate.labels
+      assert_equal "Cloned responsive array", candidate.description
     end
+  end
+
+  def test_format_attributes_for_api_passes_explicit_profile_data_through
+    profile_data = [
+      {name: "github profile", value: "https://github.com/johndoe"},
+      {name: "salary expectation", value: "100000"}
+    ]
+
+    attrs = Trakstar::Api::Candidates.format_attributes_for_api(
+      first_name: "Jaq",
+      last_name: "Smith",
+      email: "jaq.smith@testdouble.com",
+      profile_data: profile_data
+    )
+
+    assert_equal profile_data, attrs[:profile_data]
+  end
+
+  def test_format_attributes_for_api_builds_profile_data_from_freeform_keys
+    attrs = Trakstar::Api::Candidates.format_attributes_for_api(
+      first_name: "Jaq",
+      age: "30",
+      location: "USA"
+    )
+
+    assert_equal(
+      [{name: "age", value: "30"}, {name: "location", value: "USA"}],
+      attrs[:profile_data]
+    )
   end
 
   def test_candidate_can_be_created
