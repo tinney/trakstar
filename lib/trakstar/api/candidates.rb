@@ -10,8 +10,22 @@ module Trakstar
           Http.delete("/candidates/#{api_id}")
         end
 
+        UPDATABLE_ATTRIBUTES = [
+          :first_name,
+          :last_name,
+          :email,
+          :phone,
+          :description,
+          :profile_data,
+          :resume,
+          :source,
+          :opening_id,
+          :stage_id,
+          :state
+        ].freeze
+
         def update(api_id, attributes)
-          data = Http.patch("/candidates/#{api_id}", format_attributes_for_api(attributes))
+          data = Http.patch("/candidates/#{api_id}", format_attributes_for_update(attributes))
 
           Candidate.new.tap do |candidate|
             set!(candidate, data)
@@ -42,6 +56,22 @@ module Trakstar
             else
               source.map { |key, value| {name: key.to_s, value: value.to_s} }
             end
+          end
+
+          attrs
+        end
+
+        def format_attributes_for_update(attributes)
+          attrs = {}
+          source = attributes.dup
+
+          UPDATABLE_ATTRIBUTES.each do |key|
+            attrs[key] = source.delete(key) if source.key?(key)
+          end
+
+          unless source.empty?
+            profile_data = source.map { |key, value| {name: key.to_s, value: value.to_s} }
+            attrs[:profile_data] = (attrs[:profile_data] || []) + profile_data
           end
 
           attrs
