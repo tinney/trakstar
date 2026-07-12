@@ -13,6 +13,7 @@ module Trakstar
 
         params = query_params.map { |key, value| "#{key}=#{value}" }.join("&")
         uri = URI(BASE_URL + resource + "/?limit=#{LIMIT}&offset=#{offset}&#{params}")
+        log_request("GET", uri, query_params)
 
         Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
           # Note: JSON will fail as the response body is just a string
@@ -42,6 +43,7 @@ module Trakstar
         wait_for_limit
 
         uri = URI(BASE_URL + resource)
+        log_request("GET", uri)
 
         Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
           json = Trakstar.retries_and_backs_off do
@@ -57,6 +59,7 @@ module Trakstar
 
       def post(resource, data)
         uri = URI(BASE_URL + resource)
+        log_request("POST", uri, data)
         Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
           req = Net::HTTP::Post.new(uri)
           req.basic_auth(Trakstar.config.api_token, nil)
@@ -76,6 +79,7 @@ module Trakstar
 
       def patch(resource, data)
         uri = URI(BASE_URL + resource)
+        log_request("PATCH", uri, data)
         Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
           req = Net::HTTP::Patch.new(uri)
           req.basic_auth(Trakstar.config.api_token, nil)
@@ -95,6 +99,7 @@ module Trakstar
 
       def delete(resource)
         uri = URI(BASE_URL + resource)
+        log_request("DELETE", uri)
         Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
           req = Net::HTTP::Delete.new(uri)
           req.basic_auth(Trakstar.config.api_token, nil)
@@ -110,6 +115,14 @@ module Trakstar
       end
 
       private
+
+      def log_request(method, uri, attributes = nil)
+        return unless Trakstar.config.debug
+
+        message = "[Trakstar] #{method} #{uri}"
+        message += " attributes=#{attributes.inspect}" unless attributes.nil?
+        Trakstar.config.logger.debug(message)
+      end
 
       def wait_for_limit
         # if request was made less than a second ago, sleep

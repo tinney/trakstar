@@ -31,6 +31,24 @@ Or install it yourself as:
       Trakstar.candidates  # query to find all the candidates
 ```
 
+## Debug logging
+
+Set `debug: true` to log every API request — the HTTP method, the full URL, and
+the attributes it was called with. By default logs are written to `$stdout`.
+
+```ruby
+Trakstar.config(debug: true)
+
+# Provide your own logger to send output elsewhere (e.g. a file or Rails.logger)
+Trakstar.config(debug: true, logger: Logger.new("log/trakstar.log"))
+```
+
+Example output:
+
+```
+D, [...] DEBUG -- : [Trakstar] POST https://api.recruiterbox.com/v2/candidates/ attributes={:first_name=>"John"}
+```
+
 ## Running Test
 
 In order to run the test suite run the `rake test` command
