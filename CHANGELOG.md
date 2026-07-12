@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+## [2.4.0] - 2026-07-12
+- Add opt-in debug logging via `Trakstar.config(debug: true)`. Logs the HTTP method, URL, and attributes for every API request to a configurable `logger` (defaults to `$stdout`).
+
 ## [2.1.4] - 2026-04-04
 - Add support for additional Opening object fields, including stage prospecting state, application form fields, and additional fields.
 
