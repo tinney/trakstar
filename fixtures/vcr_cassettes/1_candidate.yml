@@ -39,6 +39,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":34005534,"opening_id":254644,"stage_id":2319330,"stage_name":"dolorum","email":"jackeline_farrell@bogisich.example","phone":"aut","first_name":"inventore","last_name":"voluptas","description":"Cloned
-        responsive array","profile_data":[{"name":"perferendis","value":"unde"},{"name":"eum","value":"illo"},{"name":"odit","value":"doloremque"}],"created_date":"2025-07-23","updated_date":1890992766,"resume":{"file_name":"dolorum","file_url":"quia"},"state":"Missouri","state_metadata":{"reason":null,"explanation":null},"labels":[{"id":528626,"name":"Java"},{"id":495522,"name":"React"}],"source":null,"source_type":"tempore","created_by":null,"assigned_to":{"id":267542,"name":"sed","email":"frankie@murazik-konopelski.test"}}'
+        responsive array","profile_data":[{"name":"perferendis","value":"unde"},{"name":"eum","value":"illo"},{"name":"odit","value":"doloremque"}],"created_date":"2025-07-23","updated_date":1890992766,"resume":{"file_name":"dolorum","file_url":"quia"},"state":"rejected","state_metadata":{"reason":"Not enough experience","explanation":"Needs more production Rails time"},"labels":[{"id":528626,"name":"Java"},{"id":495522,"name":"React"}],"source":null,"source_type":"tempore","created_by":null,"assigned_to":{"id":267542,"name":"sed","email":"frankie@murazik-konopelski.test"}}'
   recorded_at: Wed, 29 Oct 2025 14:54:30 GMT
 recorded_with: VCR 6.3.1

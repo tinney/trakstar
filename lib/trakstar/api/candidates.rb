@@ -110,6 +110,7 @@ module Trakstar
             candidate.created_at = data["created_date"]
             candidate.updated_at = data["updated_date"]
             candidate.state = data["state"]
+            candidate.state_metadata = data["state_metadata"]
             candidate.stage_id = data["stage_id"]
             candidate.labels = labels.map { |l| l["name"] }
             candidate.sync = -> { sync(candidate) }

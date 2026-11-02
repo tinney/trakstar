@@ -123,6 +123,27 @@ Trakstar.update_candidate(api_id,
 Trakstar.delete_candidate(api_id)
 ```
 
+### Candidate end states
+
+`state` is one of `in_process`, `hired`, `rejected`, `declined_offer`, `onhold`,
+`withdrawn`, `spam`, `archived`, `onhold_prospecting`, `did_not_convert`. When a
+candidate is moved into an end state, Trakstar records why in `state_metadata`:
+
+```ruby
+candidate = Trakstar.candidate(api_id)
+
+candidate.state                          # => "rejected"
+candidate.state_metadata["reason"]       # => "Not enough experience"
+candidate.state_metadata["explanation"]  # => free-text note, often nil
+```
+
+`reason` comes from the account's configurable list (Settings → Reasons for
+Candidate decision in Trakstar Hire) and is optional, so both keys can be `nil`.
+
+Note that `state` and `state_metadata` are only returned by the candidate
+*detail* endpoint, not the index — reading either one triggers the lazy
+per-candidate fetch.
+
 ## Interviews
 
 ```ruby

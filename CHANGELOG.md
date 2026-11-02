@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+## [2.5.0] - 2026-11-02
+- Populate `Candidate#state_metadata` from the candidate detail endpoint. It exposes the `reason` and `explanation` Trakstar records when a candidate is moved into an end state (rejected, hired, withdrawn, declined_offer). The accessor was already declared but never assigned, so it always returned `nil`.
+
 ## [2.4.0] - 2026-07-12
 - Add opt-in debug logging via `Trakstar.config(debug: true)`. Logs the HTTP method, URL, and attributes for every API request to a configurable `logger` (defaults to `$stdout`).
 
