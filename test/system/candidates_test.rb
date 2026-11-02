@@ -36,7 +36,37 @@ class CandidatesTest < Minitest::Test
       assert_equal TEST_CANDIDATE_ID, candidate.api_id
       assert_equal ["Java", "React"], candidate.labels
       assert_equal "Cloned responsive array", candidate.description
+      assert_equal "rejected", candidate.state
+      assert_equal(
+        {"reason" => "Not enough experience", "explanation" => "Needs more production Rails time"},
+        candidate.state_metadata
+      )
     end
+  end
+
+  # state_metadata only comes back from the candidate detail endpoint, so it has
+  # to survive the lazy per-candidate fetch that reading it triggers.
+  def test_state_metadata_is_set_from_the_detail_payload
+    candidate = Trakstar::Api::Candidates.set!(
+      Trakstar::Candidate.new,
+      "id" => TEST_CANDIDATE_ID,
+      "state" => "hired",
+      "state_metadata" => {"reason" => "Accepted offer", "explanation" => nil}
+    )
+
+    assert_equal "hired", candidate.state
+    assert_equal "Accepted offer", candidate.state_metadata["reason"]
+    assert_nil candidate.state_metadata["explanation"]
+  end
+
+  def test_state_metadata_is_nil_when_the_payload_omits_it
+    candidate = Trakstar::Api::Candidates.set!(
+      Trakstar::Candidate.new,
+      "id" => TEST_CANDIDATE_ID
+    )
+    candidate.sync = -> {}
+
+    assert_nil candidate.state_metadata
   end
 
   def test_format_attributes_for_api_passes_explicit_profile_data_through

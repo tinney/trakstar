@@ -29,7 +29,11 @@ class VcrDataFilter
     "modified_date" => ->(_) { Faker::Date.in_date_period },
     "tags" => ->(_) { Faker::Hipster.words },
     "team" => ->(_) { Faker::Hipster.word },
-    "state" => ->(_) { Faker::Address.state },
+    # Candidate/opening states are enums, not PII, so keep them as recorded.
+    # Faking them produced nonsense like "state":"Missouri" on a candidate.
+    # state_metadata's reason/explanation are free text and stay scrubbed by the
+    # default String filter below.
+    "state" => ->(state) { state },
     "close_date" => ->(_) { Faker::Date.in_date_period }
   }
 
