@@ -1,12 +1,12 @@
 module Trakstar
   class Opening < Models::Base
     synced_attr_accessor :title, :description, :team, :state, :position_type,
-                         :is_remote_allowed, :location, :location_city,
-                         :location_state, :location_zipcode, :location_country,
-                         :private, :is_private, :hosted_url, :application_email,
-                         :is_archived, :created_at, :updated_at, :close_date,
-                         :tags, :stages, :application_form_fields,
-                         :additional_fields
+      :is_remote_allowed, :location, :location_city,
+      :location_state, :location_zipcode, :location_country,
+      :private, :is_private, :hosted_url, :application_email,
+      :is_archived, :created_at, :updated_at, :close_date,
+      :tags, :stages, :application_form_fields,
+      :additional_fields
   end
 
   class Stage < Models::Base
@@ -15,7 +15,7 @@ module Trakstar
 
   class ApplicationFormField < Models::Base
     attr_accessor :name, :display_name, :type, :choices,
-                  :is_required, :is_disabled, :position
+      :is_required, :is_disabled, :position
   end
 
   class AdditionalField < Models::Base
